@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메인페이지</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/index_style.css">
+</head>
+<body>
+    <header>
+        <section>
+            <div class="header-container">
+
+                <div class="category-wrap">
+                    <div class="logo-wrap">
+                        <h4>RENT&SHARE</h4>
+                    </div>
+                    <nav class="category-list">
+                        <ul >
+                            <li>카테고리별</li>
+                            <li>지역별</li>
+                            <li>렌탈요청</li>
+                            <li>커뮤니티</li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="search-wrap">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <input type="text" placeholder="검색어 입력">
+                </div>
+
+                <div class="login-wrap">
+                    <nav class="login-list">
+                        <ul>
+                            <li>로그인</li>
+                            <li>회원가입</li>
+                        </ul>
+                    </nav>
+                    <div class="login-bnt">
+                        <button>기업가입</button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </header>
+
+    <main>
+        <div class="section">
+            <input type="radio" name="slide" id="slide01" checked>
+            <input type="radio" name="slide" id="slide02">
+            <input type="radio" name="slide" id="slide03">
+
+            <div class="slidewrap">
+                <ul class="slidelist">
+                    <li>
+                        <a>
+                            <label for="slide03" class="left"></label>
+                            <img src="./images/img01.jpg">
+                            <label for="slide02" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide01" class="left"></label>
+                            <img src="./images/img02.jpg">
+                            <label for="slide03" class="right"></label>
+                        </a>
+                    </li>
+                    <li>
+                        <a>
+                            <label for="slide02" class="left"></label>
+                            <img src="./images/img03.jpg">
+                            <label for="slide01" class="right"></label>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
