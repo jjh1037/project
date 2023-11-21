@@ -1,0 +1,118 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+/* ---------------------------------- reset css ---------------------------------- */
+.hd {
+    width: 100%;
+}
+.hd_wrap {
+    background-color: #454545;
+}
+
+.logo {
+    padding: 5px 0 5px 30px;
+}
+
+.logo h2 {
+    color: white;
+}
+/* --- logo --- */
+
+.tnb {
+    position: absolute;
+    top: 0;
+    right: 30px;
+    font-size: 12px;
+}
+
+.tnb ul {
+    line-height: 45px;
+    /* display: inline-block; */
+}
+
+.tnb ul li {
+    float: left;
+    margin: 0 0 0 10px;
+    padding: 0 10px 0 0;
+    color: #bbb;
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tnb ul li a {
+    color: #bbb;
+}
+
+#tnb_logout a {
+    color: red;
+}
+/* --- tnb --- */
+
+.gnb {
+    background: #494b50;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.gnb ul {
+    display: inline-block;
+}
+
+.gnb ul li {
+    /* position: relative; */
+    float: left;
+    padding: 0 20px;
+    border-right: 1px solid #2d3032;
+    font-size: 16px;
+    height: 100%;
+}
+
+.gnb ul li a {
+    color: white;
+}
+
+.gnb ul li:first-child {
+    border-left: 1px solid #2d3032;
+}
+
+/* --- gnb --- */
+/* ---------------------------------- header ---------------------------------- */
+.snb {
+    float: left;
+    width: 204px;
+}
+
+i {
+    font-size: 50px;
+    margin: 30px;
+    margin-bottom: 0px;
+    color: #454545;
+}
+
+.snb h2 {
+    margin: 10px;
+}
+
+
+
