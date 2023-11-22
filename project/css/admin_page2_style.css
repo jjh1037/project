@@ -1,0 +1,104 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul li {
+    list-style: none;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    /* min-width: 100%; */
+    /* min-height: 100%; */
+    background-color: rgb(236, 240, 244);
+}
+
+/* ---------------------------------- reset css ---------------------------------- */
+
+.left_index {
+    float: left;
+    width: 204px;
+    height: 100vh;
+    padding: 10px 10px 0 10px;
+    background-color: rgb(53, 53, 53);
+    box-shadow: 0 0 3px 1px #ccc;
+}
+
+.left_index h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.left_index h2 a{
+    /* text-align: center; */
+    color: white;
+}
+
+.left_index p {
+    margin: 20px 0 0 10px;
+    color: #aaa;
+}
+
+.left_index ul {
+    margin-top: 15px;
+}
+
+.left_index ul li a{
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+    padding: 6px 12px;
+    transition: 0.2s;
+
+}
+
+.left_index ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.left_index i {
+    color: #aaa;
+    margin-right: 14px;
+}
+
+/* left_box */
+
+/* section */
+.top {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.top h3 {
+    margin-left: 30px;
+}
+
+.main_container {
+    margin-left: 204px;
+    padding: 30px;
+}
+
+.main {
+    background-color: white;
+    box-shadow: 0 0 3px 1px #ccc;
+    margin-bottom: 30px;
+}
+
+.main1 {
+    background-color: blue;
+}
