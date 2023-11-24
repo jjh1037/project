@@ -1,5 +1,7 @@
 # project
 
+- main을 left, right container로 나누기
+
 left_container 에러 및 미완성
 - left_container과 메인section 개별 스크롤 미완
 - 메뉴 늘릴시 div크기도 같이 안늘어남
