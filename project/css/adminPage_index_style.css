@@ -1,0 +1,257 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+
+/* ---------------------------------- reset css ---------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul li {
+    list-style: none;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    /* min-width: 100%; */
+    /* min-height: 100%; */
+    background-color: rgb(236, 240, 244);
+}
+
+table {
+    /* border-spacing: 0px; */
+    border-collapse: collapse;
+    border-style: none;
+    width: 100%;
+}
+
+td {
+    border-spacing: 0px;
+    border-style: none;
+}
+
+section {
+    margin-left: 204px;
+}
+/* ---------------------------------- reset css ---------------------------------- */
+/* ---------------------------------- container ---------------------------------- */
+
+/* .container {
+} */
+
+/* ---------------------------------- container ---------------------------------- */
+
+/* ---------------------------------- left_container //미완성 ---------------------------------- */
+/* back-ground 안늘어나는거 */
+/* click이벤트중 한번 더 클릭시 색 원래대로 돌아오게 하기 */
+
+.left_container {
+    float: left;
+    width: 204px;
+    height: 100vh;
+    padding: 10px 10px 0 10px;
+    background-color: rgb(53, 53, 53);
+    box-shadow: 0 0 3px 1px #ccc;
+}
+
+.left_container h2 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.left_container h2 a{
+    /* text-align: center; */
+    color: white;
+    padding-left: 6px;
+}
+
+.left_container p {
+    margin: 20px 0 0 10px;
+    color: #aaa;
+}
+.left_container ul {
+    margin-top: 10px;
+}
+
+.left_container ul li a{
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+    padding: 6px 12px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.left_container ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.left_container i {
+    color: #aaa;
+    margin-right: 14px;
+}
+
+.menu .hide{
+    display: none; 
+}
+
+.click { /* 버튼 클릭 이벤트 */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: 0.2s;
+}
+  
+/* ---------------------------------- left_container ---------------------------------- */
+
+/* ---------------------------------- nav ---------------------------------- */
+.nav_container {
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.nav_container h2 {
+    margin-left: 30px;
+    color: rgb(80, 80, 80);
+
+}
+/* ---------------------------------- nav ---------------------------------- */
+
+/* ---------------------------------- main_container ---------------------------------- */
+.main_container {
+    /* display: inline-block; */
+    width: 100%;
+    padding: 30px;
+}
+
+.main {
+    background-color: white;
+    box-shadow: 0 0 3px 1px #ccc;
+    margin-bottom: 30px;
+}
+
+.main h3 {
+    padding: 10px 0 10px 15px;
+    border-bottom: 1px solid #888;
+    /* color: #252525; */
+    color: rgb(50, 50, 50);
+}
+
+
+/* ---------------------------------- main_container ---------------------------------- */
+/* ---------------------------------- main1 ---------------------------------- */
+#main1 th, #main1 td {
+    padding: 8px 14px;
+    height: 50px;
+    text-align: left;
+    /* vertical-align: middle; */
+}
+
+#main1 tr {
+    border-bottom: 1px solid #dcdcdc;
+}
+
+#main1 .w100 {
+    width: 150px;
+}
+
+/* col {
+    display: table-column;
+} */
+
+#main1 th {
+    background-color: #eee;
+    /* white-space: nowrap; */
+    /* text-overflow: ellipsis; */
+    line-height: 1.3rem;
+    /* font-weight: 400; */
+}
+
+#main1 select, input{
+    height: 30px;
+}
+/* ---------------------------------- main1 ---------------------------------- */
+/* ---------------------------------- main2 ---------------------------------- */
+.count {
+    text-align: right;
+}
+
+.count p {
+    margin: 5px 20px 0px 0;
+}
+
+#main2 tr {
+    height: 40px;
+    text-align: center;
+}
+
+#main2 thead {
+    background-color: #eee;
+}
+#main2 th, #main2 td {
+    border: 1px solid #ccc;
+}
+
+#main2 th:nth-child(1) {
+    width: 8%;
+}
+
+#main2 th:nth-child(2) {
+    width: 8%;
+}
+
+#main2 th:nth-child(3) {
+    width: 20%;
+}
+
+#main2 th:nth-child(4){
+    width: 25%;
+}
+
+#main2 th:nth-child(5){
+    width: 25%;
+}
+
+.btn_confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+}
+
+.btn_confirm input {
+    border: none;
+    margin: 0 4px;
+}
+
+.btn {
+    padding: 5px 12px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.green {
+    background-color: #1CC88A;
+}
+
+.blue {
+    background-color: #2185D0;
+}
+
+.red {
+    background-color: #DB2828;
+}
+
+/* ---------------------------------- main2 ---------------------------------- */
