@@ -9,86 +9,149 @@
     <link rel="stylesheet" href="./css/admin_page2_style.css">
 </head>
 <body>
-<!-- ---------------------left_container--------------------- -->
-    <div class="left_container">
-        <h2><a href="">LOGO</a></h2>
-        <p>사이트 관리</p>
-        <ul>
-            <li class="menu">
-                <a><i class="fa-regular fa-user"></i>회원관리</a>
-                <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
-                </ul>
-            </li>
-            <li class="menu">
-                <a><i class="fa-regular fa-clipboard"></i>게시판관리</a>
-                <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
-                </ul>
-            </li>
-            <li class="menu">
-                <a><i class="fa-solid fa-truck"></i>운송사관리</a>
-                <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
-                </ul>
-            </li>
-        </ul>
+    <div class="container">
+        <!-- --------------------- left_container --------------------- -->
+        <div class="left_container">
+            <h2><a href="">LOGO</a></h2>
+            <p>사이트 관리</p>
+            <ul>
+                <li class="menu">
+                    <a><i class="fa-regular fa-user"></i>회원관리</a>
+                    <ul class="hide">
+                        <li><a href="">메뉴1</a></li>
+                        <li><a href="">메뉴2</a></li>
+                        <li><a href="">메뉴3</a></li>
+                    </ul>
+                </li>
+                <li class="menu">
+                    <a><i class="fa-regular fa-clipboard"></i>게시판관리</a>
+                    <ul class="hide">
+                        <li><a href="">메뉴1</a></li>
+                        <li><a href="">메뉴2</a></li>
+                        <li><a href="">메뉴3</a></li>
+                    </ul>
+                </li>
+                <li class="menu">
+                    <a><i class="fa-solid fa-truck"></i>운송사관리</a>
+                    <ul class="hide">
+                        <li><a href="">운송사 목록</a></li>
+                        <li><a href="">운송사 신규등록</a></li>
+                        <li><a href="">운송사 메일전송</a></li>
+                    </ul>
+                </li>
+            </ul>
 
-        <p>example</p>
-        <ul>
-            <li class="menu">
-                <a><i class="fa-regular fa-lightbulb"></i>example1</a>
-                <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
-                </ul>
-            </li>
-           
-            </li>
-        </ul>
+            <p>example</p>
+            <ul>
+                <li class="menu">
+                    <a><i class="fa-regular fa-lightbulb"></i>example1</a>
+                    <ul class="hide">
+                        <li><a href="">메뉴1</a></li>
+                        <li><a href="">메뉴2</a></li>
+                        <li><a href="">메뉴3</a></li>
+                    </ul>
+                </li>
+            
+                </li>
+            </ul>
 
-        <div class="move_userpage">
-            <p></p>
-        </div>
-        
-    </div>
-    <!-- ---------------------left_container--------------------- -->
-    <header>
-        <nav>
-            <div class="nav_container">
-                <h3>CONTENT</h3>
+            <div class="move_userpage">
+                <p></p>
             </div>
-        </nav>
-    </header>
-
-    <section>
-        <div class="main_container">
-            <div class="main" id="main1">
-                <div>
-                    <h2>Main1</h2>
+            
+        </div>
+        <!-- --------------------- left_container----------------------->
+        <!-- --------------------- nav ----------------------->
+        <header>
+            <nav>
+                <div class="nav_container">
+                    <h2>운송사 목록</h2>
                 </div>
-                
-                <tbody>
-                    <tr>
-                        <th>ex1</th>
-                        <td>ex2</td>  
-                        <td>ex3</td>  
-                    </tr>
-                </tbody>
-            </div>
+            </nav>
+        </header>
+        <!-- --------------------- nav ----------------------->
+        <!-- --------------------- main_container ----------------------->
 
-            <div class="main" id="main2">
-                <h2>Main2</h2>
+        <section>
+            <div class="main_container">
+                <div class="main" id="main1">
+                    <h3>운송사 검색</h3>
+
+                    <form name="fsearch" id="fsearch" method="get">
+                        <div class="f_table">
+                            <table>
+                                <colgroup>
+                                    <col class="w100">
+                                    <col>
+                                </colgroup>
+                                <tbody>
+                                    <tr>
+                                        <th>검색어</th>
+                                        <td>
+                                            <select name="">
+                                                <option value="id">운송사코드</option>
+                                                <option value="name">이름</option>
+                                            </select>
+                                            <input type="text" name="stx" value="" class="frm_input" size="30">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="main" id="main2">
+                    <h3>운송사 검색결과</h3>
+                    <div class="count">
+                        <p>전체결과 : <span>1</span>개</p>
+                    </div>
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>운송사코드</th>
+                                <th>국내/해외</th>
+                                <th>이름</th>
+                                <th>전화번호</th>
+                                <th>이메일</th>
+                                <th>비고</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>국내</td>
+                                <td>우체국택배</td>
+                                <td>051-123-4567</td>
+                                <td>email@email.com</td>
+                                <td>
+                                    <a href="" class="btn blue">상세</a>
+                                    <a href="" class="btn green">수정</a>
+                                    <a href="" class="btn red">삭제</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>해외</td>
+                                <td>DHL Express</td>
+                                <td>+49 22892959595</td>
+                                <td>DHL@email.com</td>
+                                <td>
+                                    <a href="" class="btn blue">상세</a>
+                                    <a href="" class="btn green">수정</a>
+                                    <a href="" class="btn red">삭제</a>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
-        </div>
-    </section>
+        </section>
+        <!-- --------------------- main_container ----------------------->
+    </div>
+
 
     <footer>
 
