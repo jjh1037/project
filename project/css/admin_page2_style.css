@@ -24,12 +24,34 @@ body {
     /* min-height: 100%; */
     background-color: rgb(236, 240, 244);
 }
+
+table {
+    /* border-spacing: 0px; */
+    border-collapse: collapse;
+    border-style: none;
+    width: 100%;
+}
+
+td {
+    border-spacing: 0px;
+    border-style: none;
+}
+
+section {
+    margin-left: 204px;
+}
 /* ---------------------------------- reset css ---------------------------------- */
+/* ---------------------------------- container ---------------------------------- */
+
+/* .container {
+} */
+
+/* ---------------------------------- container ---------------------------------- */
 
 /* ---------------------------------- left_container //미완성 ---------------------------------- */
-/* 미완 */
 /* back-ground 안늘어나는거 */
 /* click이벤트중 한번 더 클릭시 색 원래대로 돌아오게 하기 */
+
 .left_container {
     float: left;
     width: 204px;
@@ -98,15 +120,17 @@ body {
     align-items: center;
 }
 
-.nav_container h3 {
+.nav_container h2 {
     margin-left: 30px;
-    color: rgb(83, 88, 88);
+    color: rgb(80, 80, 80);
+
 }
 /* ---------------------------------- nav ---------------------------------- */
 
-/* ---------------------------------- container // 미완 ---------------------------------- */
+/* ---------------------------------- main_container ---------------------------------- */
 .main_container {
-    margin-left: 204px;
+    /* display: inline-block; */
+    width: 100%;
     padding: 30px;
 }
 
@@ -116,15 +140,103 @@ body {
     margin-bottom: 30px;
 }
 
-#main1 h2{
-    border-bottom: 1px solid #ccc;
+.main h3 {
+    padding: 10px 0 10px 15px;
+    border-bottom: 1px solid #888;
     /* color: #252525; */
-    color: rgb(71, 71, 71);
+    color: rgb(50, 50, 50);
 }
 
 
-#main2 {
-    color: rgb(71, 71, 71);
+/* ---------------------------------- main_container ---------------------------------- */
+/* ---------------------------------- main1 ---------------------------------- */
+#main1 th, #main1 td {
+    padding: 8px 14px;
+    height: 50px;
+    text-align: left;
+    /* vertical-align: middle; */
 }
 
-/* ---------------------------------- container ---------------------------------- */
+#main1 .w100 {
+    width: 150px;
+}
+
+/* col {
+    display: table-column;
+} */
+
+#main1 th {
+    background-color: #eee;
+    /* white-space: nowrap; */
+    /* text-overflow: ellipsis; */
+    line-height: 1.3rem;
+    /* font-weight: 400; */
+}
+
+#main1 select, input{
+    height: 30px;
+}
+/* ---------------------------------- main1 ---------------------------------- */
+/* ---------------------------------- main2 ---------------------------------- */
+.count {
+    text-align: right;
+}
+
+.count p {
+    margin: 5px 20px 0px 0;
+}
+
+#main2 tr {
+    height: 40px;
+    text-align: center;
+}
+
+#main2 thead {
+    background-color: #eee;
+}
+#main2 th, #main2 td {
+    border: 1px solid #ccc;
+}
+
+#main2 th:nth-child(1) {
+    width: 8%;
+}
+
+#main2 th:nth-child(2) {
+    width: 8%;
+}
+
+#main2 th:nth-child(3) {
+    width: 20%;
+}
+
+#main2 th:nth-child(4){
+    width: 25%;
+}
+
+#main2 th:nth-child(5){
+    width: 25%;
+}
+
+.btn {
+    padding: 5px 12px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.green {
+    background-color: #1CC88A;
+}
+
+.blue {
+    background-color: #2185D0;
+}
+
+.red {
+    background-color: #DB2828;
+}
+
+/* ---------------------------------- main2 ---------------------------------- */
+
