@@ -222,6 +222,8 @@ section {
     width: 25%;
 }
 
+
+
 .btn_confirm {
     display: flex;
     justify-content: center;
@@ -234,12 +236,15 @@ section {
     margin: 0 4px;
 }
 
+
+
 .btn {
     padding: 5px 12px;
     color: #fff;
     border-radius: 3px;
     font-size: 14px;
     cursor: pointer;
+    text-align: center;
 }
 
 .green {

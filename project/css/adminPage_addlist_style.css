@@ -149,6 +149,9 @@ section {
 
 
 /* ---------------------------------- main_container ---------------------------------- */
+.main_container {
+    position: relative;
+}
 /* ---------------------------------- main1 ---------------------------------- */
 #main1 th, #main1 td{
     padding: 8px 14px;
@@ -207,6 +210,10 @@ section {
 
 #main1 p input:nth-child(2) {
     margin-left: 50px ;
+}
+
+#main1 .file_insert {
+    padding: 0;
 }
 
 .btn_confirm {
