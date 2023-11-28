@@ -1,6 +1,6 @@
 # project
 
-- main을 left, right container로 나누기
+- main을 left, right container로 나누기 -- 완료
 
 left_container 에러 및 미완성
 - left_container과 메인section 개별 스크롤 미완
