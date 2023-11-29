@@ -5,7 +5,7 @@ public class ShippingDto {
     private boolean domestic;
     private String name;
     private String comNum;
-    private String telNum;
+    private String faxNum;
     private String address1;
     private String address2;
     private String city;
@@ -52,12 +52,12 @@ public class ShippingDto {
         this.comNum = comNum;
     }
 
-    public String getTelNum() {
-        return telNum;
+    public String getFaxNum() {
+        return faxNum;
     }
 
-    public void setTelNum(String telNum) {
-        this.telNum = telNum;
+    public void setFaxNum(String faxNum) {
+        this.faxNum = faxNum;
     }
 
     public String getAddress1() {
@@ -171,7 +171,7 @@ public class ShippingDto {
                 ", domestic=" + domestic +
                 ", name='" + name + '\'' +
                 ", comNum='" + comNum + '\'' +
-                ", telNum='" + telNum + '\'' +
+                ", faxNum='" + faxNum + '\'' +
                 ", address1='" + address1 + '\'' +
                 ", address2='" + address2 + '\'' +
                 ", city='" + city + '\'' +
