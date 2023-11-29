@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운송사 관리 > 운송사 신규등록</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/write.css}" />
+</head>
+<body>
+<div class="container">
+    <!-- --------------------- left_container --------------------- -->
+    <div class="left_container">
+        <h2><a href="">LOGO</a></h2>
+        <p>사이트 관리</p>
+        <ul>
+            <li class="menu">
+                <a><i class="fa-regular fa-user"></i>회원관리</a>
+                <ul class="hide">
+                    <li><a href="">메뉴1</a></li>
+                    <li><a href="">메뉴2</a></li>
+                    <li><a href="">메뉴3</a></li>
+                </ul>
+            </li>
+            <li class="menu">
+                <a><i class="fa-regular fa-clipboard"></i>게시판관리</a>
+                <ul class="hide">
+                    <li><a href="">메뉴1</a></li>
+                    <li><a href="">메뉴2</a></li>
+                    <li><a href="">메뉴3</a></li>
+                </ul>
+            </li>
+            <li class="menu">
+                <a><i class="fa-solid fa-truck"></i>운송사관리</a>
+                <!--                <ul class="hide">-->
+                <ul>
+                    <li><a th:href="@{/shipping/list}">운송사 목록</a></li>
+                    <li><a th:href="@{/shipping/write}">운송사 신규등록</a></li>
+                    <li><a href="">운송사 메일전송</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>example</p>
+        <ul>
+            <li class="menu">
+                <a><i class="fa-regular fa-lightbulb"></i>example1</a>
+                <ul class="hide">
+                    <li><a href="">메뉴1</a></li>
+                    <li><a href="">메뉴2</a></li>
+                    <li><a href="">메뉴3</a></li>
+                </ul>
+            </li>
+
+            </li>
+        </ul>
+
+        <div class="move_userpage">
+            <p></p>
+        </div>
+
+    </div>
+    <!-- --------------------- left_container----------------------->
+    <!-- --------------------- nav ----------------------->
+    <header>
+        <nav>
+            <div class="nav_container">
+                <h2>운송사 신규등록</h2>
+            </div>
+        </nav>
+    </header>
+    <!-- --------------------- nav ----------------------->
+    <!-- --------------------- main_container ----------------------->
+
+    <section>
+        <div class="main_container">
+            <div class="main" id="main1">
+                <h3>운송사 등록</h3>
+
+                <form onsubmit="return frmCheck()" action="/shipping/write" method="post" enctype="multipart/form-data" autocomplete="off">
+                    <div class="f_table">
+                        <table>
+                            <colgroup>
+                                <col class="w100">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th>운송사명*</th>
+                                <td>
+                                    <input type="text" name="name" class="frm_input">
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>국내/해외*</th>
+                                <td>
+                                    <select name="is_domestic">
+                                        <option value="">----------------선택----------------</option>
+                                        <option value="1">국내</option>
+                                        <option value="0">해외</option>
+                                    </select>
+                                </td>
+                                <th>이메일*</th>
+                                <td>
+                                    <input type="text" name="email" value="" class="frm_input">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>전화번호*</th>
+                                <td>
+                                    <input type="text" name="comNum" value="" class="frm_input">
+                                </td>
+                                <th>팩스번호</th>
+                                <td>
+                                    <input type="text" name="faxNum" value="" class="frm_input">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>사업장 주소</th>
+                                <td>
+                                    <p>
+                                        <input type="text" name="frm_input" value="" class="frm_input">
+                                        주소1*
+                                        <input type="text" name="frm_input" value="" class="frm_input">
+                                        주소2
+                                    </p>
+                                    <p>
+
+                                    </p>
+                                    <p>
+                                        <input type="text" name="frm_input" value="" class="frm_input">
+                                        우편번호*
+                                    </p>
+                                    <p>
+                                        <input type="text" name="frm_input" value="" class="frm_input">
+                                        나라*
+                                    </p>
+                                    <p>
+                                        <input type="text" name="frm_input" value="" class="frm_input">
+                                        도시*
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr class="niga">
+                                <th>운송사 이미지</th>
+                                <td>
+                                    <input type="file" name="file_insert" class="file_insert" />
+                                </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="btn_confirm">
+                        <input type="submit" value="확인" class="btn green">
+                        <input type="button" value="취소" class="btn red">
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </section>
+    <!-- --------------------- main_container ----------------------->
+</div>
+
+
+<footer>
+
+</footer>
+
+
+<script>
+    $(document).ready(function(){
+        $(".menu>a").click(function(){
+            // $(this).next("ul").toggleClass("hide"); // No transition
+            var submenu = $(this).next("ul");
+
+            if(submenu.is(":visible")) {
+                submenu.slideUp();
+            }else {
+                submenu.slideDown();
+            }
+        });
+    });
+
+    const nonClick = document.querySelectorAll(".menu a");
+
+    function handleClick(event) {
+        nonClick.forEach((e) => {
+            e.classList.remove("click");
+        });
+        event.target.classList.add("click");
+    }
+
+    nonClick.forEach((e) => {
+        e.addEventListener("click", handleClick)
+    });
+
+</script>
+</body>
+</html>

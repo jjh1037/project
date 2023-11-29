@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>운송사 관리 > 운송사 목록</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/list.css}" />
+</head>
+<body>
+<div class="container">
+    <!-- --------------------- left_container --------------------- -->
+    <div class="left_container">
+        <h2><a href="">LOGO</a></h2>
+        <p>사이트 관리</p>
+        <ul>
+            <li class="menu">
+                <a><i class="fa-regular fa-user"></i>회원관리</a>
+                <ul class="hide">
+                    <li><a href="">메뉴1</a></li>
+                    <li><a href="">메뉴2</a></li>
+                    <li><a href="">메뉴3</a></li>
+                </ul>
+            </li>
+            <li class="menu">
+                <a><i class="fa-regular fa-clipboard"></i>게시판관리</a>
+                <ul class="hide">
+                    <li><a href="">메뉴1</a></li>
+                    <li><a href="">메뉴2</a></li>
+                    <li><a href="">메뉴3</a></li>
+                </ul>
+            </li>
+            <li class="menu">
+                <a><i class="fa-solid fa-truck"></i>운송사관리</a>
+<!--                <ul class="hide">-->
+                <ul>
+                    <li><a th:href="@{/shipping/list}">운송사 목록</a></li>
+                    <li><a th:href="@{/shipping/write}">운송사 신규등록</a></li>
+                    <li><a href="">운송사 메일전송</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <p>example</p>
+        <ul>
+            <li class="menu">
+                <a><i class="fa-regular fa-lightbulb"></i>example1</a>
+                <ul class="hide">
+                    <li><a href="">메뉴1</a></li>
+                    <li><a href="">메뉴2</a></li>
+                    <li><a href="">메뉴3</a></li>
+                </ul>
+            </li>
+
+            </li>
+        </ul>
+
+        <div class="move_userpage">
+            <p></p>
+        </div>
+
+    </div>
+    <!-- --------------------- left_container----------------------->
+    <!-- --------------------- nav ----------------------->
+    <header>
+        <nav>
+            <div class="nav_container">
+                <h2>운송사 목록</h2>
+            </div>
+        </nav>
+    </header>
+    <!-- --------------------- nav ----------------------->
+    <!-- --------------------- main_container ----------------------->
+
+    <section>
+        <div class="main_container">
+            <div class="main" id="main1">
+                <h3>운송사 검색</h3>
+
+                <form name="fsearch" id="fsearch" method="get">
+                    <div class="f_table">
+                        <table>
+                            <colgroup>
+                                <col class="w100">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th>검색어</th>
+                                <td>
+                                    <select name="">
+                                        <option value="id">운송사코드</option>
+                                        <option value="name">이름</option>
+                                    </select>
+                                    <input type="text" name="stx" value="" class="frm_input" size="30">
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="btn_confirm">
+                        <input type="submit" value="검색" class="btn green">
+                        <input type="button" value="초기화" class="btn red">
+                    </div>
+                </form>
+            </div>
+
+            <div class="main" id="main2">
+                <h3>운송사 검색결과</h3>
+                <div class="count">
+                    <p>전체결과 : <span>1</span>개</p>
+                </div>
+
+                <table>
+                    <thead>
+                    <tr>
+                        <th>운송사코드</th>
+                        <th>국내/해외</th>
+                        <th>이름</th>
+                        <th>전화번호</th>
+                        <th>이메일</th>
+                        <th>비고</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>국내</td>
+                        <td>우체국택배</td>
+                        <td>051-123-4567</td>
+                        <td>email@email.com</td>
+                        <td>
+                            <a href="" class="btn blue">상세</a>
+                            <a href="" class="btn green">수정</a>
+                            <a href="" class="btn red">삭제</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>해외</td>
+                        <td>DHL Express</td>
+                        <td>+49 22892959595</td>
+                        <td>DHL@email.com</td>
+                        <td>
+                            <a href="" class="btn blue">상세</a>
+                            <a href="" class="btn green">수정</a>
+                            <a href="" class="btn red">삭제</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </section>
+    <!-- --------------------- main_container ----------------------->
+</div>
+
+
+<footer>
+
+</footer>
+
+
+<script>
+    $(document).ready(function(){
+        $(".menu>a").click(function(){
+            var submenu = $(this).next("ul");
+
+            if(submenu.is(":visible")) {
+                submenu.slideUp();
+            }else {
+                submenu.slideDown();
+            }
+        });
+    });
+
+    const nonClick = document.querySelectorAll(".menu a");
+
+    function handleClick(event) {
+        nonClick.forEach((e) => {
+            e.classList.remove("click");
+        });
+        event.target.classList.add("click");
+    }
+
+    nonClick.forEach((e) => {
+        e.addEventListener("click", handleClick)
+    });
+
+</script>
+</body>
+</html>
