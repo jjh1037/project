@@ -38,7 +38,7 @@
                 <!--                <ul class="hide">-->
                 <ul>
                     <li><a th:href="@{/shipping/list}">운송사 목록</a></li>
-                    <li><a th:href="@{/shipping/write}">운송사 신규등록</a></li>
+                    <li><a th:href="@{/shipping/write}" class="selected">운송사 신규등록</a></li>
                     <li><a href="">운송사 메일전송</a></li>
                 </ul>
             </li>
@@ -78,9 +78,9 @@
     <section>
         <div class="main_container">
             <div class="main" id="main1">
-                <h3>운송사 등록</h3>
+                <h3>운송사 정보</h3>
 
-                <form name="fsearch" id="fsearch" method="get">
+                <form onsubmit="return frmCheck()" action="/shipping/write" method="post" enctype="multipart/form-data" autocomplete="off">
                     <div class="f_table">
                         <table>
                             <colgroup>
@@ -91,14 +91,14 @@
                             <tr>
                                 <th>운송사명*</th>
                                 <td>
-                                    <input type="text" name="frm_input" value="" class="frm_input">
+                                    <input type="text" name="name" class="frm_input">
                                 </td>
 
                             </tr>
                             <tr>
                                 <th>국내/해외*</th>
                                 <td>
-                                    <select name="is_domestic">
+                                    <select name="domestic">
                                         <option value="">----------------선택----------------</option>
                                         <option value="1">국내</option>
                                         <option value="0">해외</option>
@@ -106,41 +106,41 @@
                                 </td>
                                 <th>이메일*</th>
                                 <td>
-                                    <input type="text" name="frm_input" value="" class="frm_input">
+                                    <input type="text" name="email" class="frm_input">
                                 </td>
                             </tr>
                             <tr>
                                 <th>전화번호*</th>
                                 <td>
-                                    <input type="text" name="frm_input" value="" class="frm_input">
+                                    <input type="text" name="comNum" class="frm_input">
                                 </td>
                                 <th>팩스번호</th>
                                 <td>
-                                    <input type="text" name="frm_input" value="" class="frm_input">
+                                    <input type="text" name="faxNum" class="frm_input">
                                 </td>
                             </tr>
                             <tr>
                                 <th>사업장 주소</th>
                                 <td>
                                     <p>
-                                        <input type="text" name="frm_input" value="" class="frm_input">
+                                        <input type="text" name="address1" class="frm_input">
                                         주소1*
-                                        <input type="text" name="frm_input" value="" class="frm_input">
-                                        주소2
+                                        <input type="text" name="address2" class="frm_input">
+                                        상세주소
                                     </p>
                                     <p>
 
                                     </p>
                                     <p>
-                                        <input type="text" name="frm_input" value="" class="frm_input">
+                                        <input type="text" name="postcode" class="frm_input">
                                         우편번호*
                                     </p>
                                     <p>
-                                        <input type="text" name="frm_input" value="" class="frm_input">
+                                        <input type="text" name="country" class="frm_input">
                                         나라*
                                     </p>
                                     <p>
-                                        <input type="text" name="frm_input" value="" class="frm_input">
+                                        <input type="text" name="city" class="frm_input">
                                         도시*
                                     </p>
                                 </td>
@@ -148,7 +148,7 @@
                             <tr class="niga">
                                 <th>운송사 이미지</th>
                                 <td>
-                                    <input type="file" name="file_insert" class="file_insert" />
+                                    <input type="file" name="file" class="file_insert" />
                                 </td>
 
                             </tr>

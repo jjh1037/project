@@ -35,9 +35,9 @@
             </li>
             <li class="menu">
                 <a><i class="fa-solid fa-truck"></i>운송사관리</a>
-<!--                <ul class="hide">-->
+                <!-- <ul class="hide"> -->
                 <ul>
-                    <li><a th:href="@{/shipping/list}">운송사 목록</a></li>
+                    <li><a th:href="@{/shipping/list}" class="selected">운송사 목록</a></li>
                     <li><a th:href="@{/shipping/write}">운송사 신규등록</a></li>
                     <li><a href="">운송사 메일전송</a></li>
                 </ul>
@@ -80,7 +80,7 @@
             <div class="main" id="main1">
                 <h3>운송사 검색</h3>
 
-                <form name="fsearch" id="fsearch" method="get">
+                <form action="/shipping/list" name="fsearch" id="fsearch" method="get">
                     <div class="f_table">
                         <table>
                             <colgroup>
@@ -91,11 +91,11 @@
                             <tr>
                                 <th>검색어</th>
                                 <td>
-                                    <select name="">
+                                    <select name="searchType" class="searchType">
                                         <option value="id">운송사코드</option>
                                         <option value="name">이름</option>
                                     </select>
-                                    <input type="text" name="stx" value="" class="frm_input" size="30">
+                                    <input type="text" name="words" class="words" size="30" required>
                                 </td>
                             </tr>
                             </tbody>
@@ -103,7 +103,7 @@
                     </div>
                     <div class="btn_confirm">
                         <input type="submit" value="검색" class="btn green">
-                        <input type="button" value="초기화" class="btn red">
+                        <input type="button" value="초기화" class="btn red"> <!-- 기능 미구현-->
                     </div>
                 </form>
             </div>
@@ -111,7 +111,7 @@
             <div class="main" id="main2">
                 <h3>운송사 검색결과</h3>
                 <div class="count">
-                    <p>전체결과 : <span>1</span>개</p>
+                    <p>전체결과 : <span><strong>10</strong></span>개</p>
                 </div>
 
                 <table>
@@ -126,24 +126,20 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>국내</td>
-                        <td>우체국택배</td>
-                        <td>051-123-4567</td>
-                        <td>email@email.com</td>
+                    <tr th:each="shipList: ${list}">
+                        <td>[[${shipList.id}]]</td>
                         <td>
-                            <a href="" class="btn blue">상세</a>
-                            <a href="" class="btn green">수정</a>
-                            <a href="" class="btn red">삭제</a>
+                            <th:block th:if="${#strings.equals(shipList.domestic, 'true')}">
+
+                                <p>국내</p>
+                            </th:block>
+                            <th:block th:unless="${#strings.equals(shipList.domestic, 'true')}">
+                                <p>해외</p>
+                            </th:block>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>해외</td>
-                        <td>DHL Express</td>
-                        <td>+49 22892959595</td>
-                        <td>DHL@email.com</td>
+                        <td>[[${shipList.name}]]</td>
+                        <td>[[${shipList.comNum}]]</td>
+                        <td>[[${shipList.email}]]</td>
                         <td>
                             <a href="" class="btn blue">상세</a>
                             <a href="" class="btn green">수정</a>

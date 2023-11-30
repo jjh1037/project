@@ -1,4 +1,4 @@
-@charset 'utf-8';
+@charset 'UTF-8';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 /* ---------------------------------- reset css ---------------------------------- */
@@ -109,6 +109,12 @@ section {
     border-radius: 4px;
     transition: 0.2s;
 }
+
+.selected {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
 
 /* ---------------------------------- left_container ---------------------------------- */
 
