@@ -40,7 +40,7 @@ public class ShippingController {
    }
 
    @GetMapping("/write")
-    public  String getView() {
+    public String getWrite() {
        return "shipping/write";
    }
 
@@ -72,6 +72,13 @@ public class ShippingController {
 
        shippingMapper.setWrite(shippingDto);
        return "redirect:/shipping/list";
+   }
+
+   @GetMapping("/view")
+    public String getView(@RequestParam int id, Model model){
+
+       model.addAttribute("view", shippingMapper.getView(id));
+       return "shipping/view";
    }
 
 }

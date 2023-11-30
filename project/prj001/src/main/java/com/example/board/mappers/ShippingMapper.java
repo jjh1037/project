@@ -19,4 +19,7 @@ public interface ShippingMapper {
     @Select("SELECT * FROM ${searchQuery} shipping ORDER BY id DESC")
     List<ShippingDto> getList(Map<String, Object> map);
 
+    @Select("SELECT * FROM shipping WHERE id = #{id}")
+    ShippingDto getView(int id);
+
 }

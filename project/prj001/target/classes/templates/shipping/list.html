@@ -137,11 +137,15 @@
                                 <p>해외</p>
                             </th:block>
                         </td>
-                        <td>[[${shipList.name}]]</td>
+                        <td>
+                            <a th:href="@{/shipping/view?(id=${shipList.id})}">
+                                [[${shipList.name}]]
+                            </a>
+                        </td>
                         <td>[[${shipList.comNum}]]</td>
                         <td>[[${shipList.email}]]</td>
                         <td>
-                            <a href="" class="btn blue">상세</a>
+                            <a th:href="@{/shipping/view?(id=${shipList.id})}" class="btn blue">상세</a>
                             <a href="" class="btn green">수정</a>
                             <a href="" class="btn red">삭제</a>
                         </td>
