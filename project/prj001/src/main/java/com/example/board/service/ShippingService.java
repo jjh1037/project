@@ -5,6 +5,7 @@ import com.example.board.mappers.ShippingMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,9 +20,9 @@ public class ShippingService {
         Map<String, Object> map = new HashMap<>();
 
         String searchQuery= "";
-        if(searchQuery.equals("name")) {
+        if(searchType.equals("name")) {
             searchQuery = "WHERE " + searchType + " LIKE '%"+words+"%'";
-        }else if(searchQuery.equals("id")) {
+        }else if(searchType.equals("id")) {
             searchQuery = "WHERE " + searchType + " = '" + words + "'";
         }else {
             searchQuery = "";
@@ -30,6 +31,21 @@ public class ShippingService {
         map.put("searchQuery", searchQuery);
 
         return shippingMapper.getList(map);
+    }
+
+    public void setDelete(int id) {
+        if(id > 0) {
+            ShippingDto shippingDto = shippingMapper.getView(id);
+            shippingMapper.setDelete(id);
+
+            String removeFile = shippingDto.getSavedFilePathName();
+            if(removeFile != null) {
+                File f = new File(removeFile);
+                if(f.exists()) {
+                    f.delete();
+                }
+            }
+        }
     }
 
 }

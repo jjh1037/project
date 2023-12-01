@@ -21,7 +21,7 @@ a {
 body {
     font-family: 'Noto Sans KR', sans-serif;
     /* min-width: 100%; */
-    /* min-height: 100%; */
+    min-height: 100%;
     background-color: rgb(236, 240, 244);
 }
 
@@ -55,7 +55,7 @@ section {
 .left_container {
     float: left;
     width: 204px;
-    height: 100vh;
+    min-height: 100vh;
     padding: 10px 10px 0 10px;
     background-color: rgb(53, 53, 53);
     box-shadow: 0 0 3px 1px #ccc;

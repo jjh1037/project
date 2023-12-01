@@ -91,11 +91,16 @@
                             <tr>
                                 <th>검색어</th>
                                 <td>
+<!--                                    <select name="searchType" class="searchType">-->
+<!--                                        <option value="">전체</option>-->
+<!--                                        <option value="1">국내</option>-->
+<!--                                        <option value="0">해외</option>-->
+<!--                                    </select>-->
                                     <select name="searchType" class="searchType">
-                                        <option value="id">운송사코드</option>
                                         <option value="name">이름</option>
+                                        <option value="id">운송사코드</option>
                                     </select>
-                                    <input type="text" name="words" class="words" size="30" required>
+                                    <input type="text" name="words" class="words" size="30">
                                 </td>
                             </tr>
                             </tbody>
@@ -103,7 +108,8 @@
                     </div>
                     <div class="btn_confirm">
                         <input type="submit" value="검색" class="btn green">
-                        <input type="button" value="초기화" class="btn red"> <!-- 기능 미구현-->
+                        <a th:href="@{/shipping/list}" class="btn red">초기화</a>
+<!--                        <input type="button" value="초기화" class="btn red"> -->
                     </div>
                 </form>
             </div>

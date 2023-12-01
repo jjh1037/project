@@ -118,33 +118,26 @@
                             <tr>
                                 <th>사업장 주소</th>
                                 <td>
-                                    <p>
-                                        <span>[[${view.address1}]]</span>
-                                        주소1*
-                                        <span>[[${view.address2}]]</span>
-                                        상세주소
-                                    </p>
-                                    <p>
-
-                                    </p>
-                                    <p>
-                                        <span>[[${view.postcode}]]</span>
-                                        우편번호*
-                                    </p>
-                                    <p>
-                                        <span>[[${view.country}]]</span>
-                                        나라*
-                                    </p>
-                                    <p>
-                                        <span>[[${view.city}]]</span>
-                                        도시*
-                                    </p>
+                                    <ul>
+                                        <li>
+                                            <label>주소1*</label>
+                                            <p>[[${view.address1}]]</p>
+                                            <label>상세주소</label>
+                                            <p>[[${view.address2}]]</p>
+                                        </li>
+                                        <li>
+                                            <label>우편번호*</label>
+                                            <p>[[${view.postcode}]]</p>
+                                        </li>
+                                    </ul>
                                 </td>
                             </tr>
                             <tr class="img_file">
                                 <th>운송사 이미지</th>
                                 <td>
-                                    <input type="file" name="file" class="file_insert" />
+                                    <img th:src="@{|/${view.folderName}/${view.savedFileName}|}" width="250" alt="">
+
+                                    <!--                                    <input type="file" name="file" class="file_insert" />-->
                                 </td>
 
                             </tr>
@@ -152,7 +145,8 @@
                         </table>
                     </div>
                     <div class="btn_confirm">
-                        <input type="submit" value="확인" class="btn green">
+<!--                        <input type="submit" value="확인" class="btn green">-->
+                        <a href="javascript:window.history.back();" class="btn green">확인</a>
                         <input type="button" value="취소" class="btn red">
                     </div>
                 </form>
