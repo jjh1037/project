@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>운송사 관리 > 운송사 신규등록</title>
+    <title>운송사 관리 > 운송사 수정</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/write.css}" />
@@ -37,8 +37,8 @@
                 <a><i class="fa-solid fa-truck"></i>운송사관리</a>
                 <!--                <ul class="hide">-->
                 <ul>
-                    <li><a th:href="@{/shipping/list}">운송사 목록</a></li>
-                    <li><a th:href="@{/shipping/write}" class="selected">운송사 신규등록</a></li>
+                    <li><a th:href="@{/shipping/list}" class="selected">운송사 목록</a></li>
+                    <li><a th:href="@{/shipping/write}">운송사 신규등록</a></li>
                     <li><a href="">운송사 메일전송</a></li>
                 </ul>
             </li>
@@ -80,7 +80,7 @@
             <div class="main" id="main1">
                 <h3>운송사 정보</h3>
 
-                <form onsubmit="return frmCheck()" action="/shipping/write" method="post" enctype="multipart/form-data" autocomplete="off">
+                <form onsubmit="return frmCheck()" action="/shipping/update" method="post" enctype="multipart/form-data" autocomplete="off">
                     <div class="f_table">
                         <table>
                             <colgroup>
@@ -91,7 +91,7 @@
                             <tr>
                                 <th>운송사명*</th>
                                 <td>
-                                    <input type="text" name="name" class="name">
+                                    <input type="text" name="name" class="name" th:value="${shipList.name}">
                                 </td>
 
                             </tr>
@@ -106,41 +106,41 @@
                                 </td>
                                 <th>이메일*</th>
                                 <td>
-                                    <input type="text" name="email" class="email">
+                                    <input type="text" name="email" class="email" th:value="${shipList.email}">
                                 </td>
                             </tr>
                             <tr>
                                 <th>전화번호*</th>
                                 <td>
-                                    <input type="text" name="comNum" class="comNum">
+                                    <input type="text" name="comNum" class="comNum" th:value="${shipList.comNum}">
                                 </td>
                                 <th>팩스번호</th>
                                 <td>
-                                    <input type="text" name="faxNum" class="faxNum">
+                                    <input type="text" name="faxNum" class="faxNum" th:value="${shipList.faxNum}">
                                 </td>
                             </tr>
                             <tr>
                                 <th>사업장 주소</th>
                                 <td>
                                     <p>
-                                        <input type="text" name="address1" class="address1">
+                                        <input type="text" name="address1" class="address1" th:value="${shipList.address1}">
                                         주소1*
-                                        <input type="text" name="address2" class="address2">
+                                        <input type="text" name="address2" class="address2" th:value="${shipList.address2}">
                                         상세주소
                                     </p>
                                     <p>
 
                                     </p>
                                     <p>
-                                        <input type="text" name="postcode" class="postcode">
+                                        <input type="text" name="postcode" class="postcode" th:value="${shipList.postcode}">
                                         우편번호*
                                     </p>
                                     <p>
-                                        <input type="text" name="country" class="country">
+                                        <input type="text" name="country" class="country" th:value="${shipList.country}">
                                         나라*
                                     </p>
                                     <p>
-                                        <input type="text" name="city" class="city">
+                                        <input type="text" name="city" class="city" th:value="${shipList.city}">
                                         도시*
                                     </p>
                                 </td>
@@ -149,6 +149,7 @@
                                 <th>운송사 이미지</th>
                                 <td>
                                     <input type="file" name="file" class="file_insert" />
+                                    [[${shipList.orgName}]]
                                 </td>
                             </tr>
                             </tbody>
@@ -156,9 +157,16 @@
                     </div>
 
                     <div class="btn_confirm">
-                        <input type="submit" value="확인" class="btnConfirm btn green">
-                        <input type="button" value="취소" class="btn red" onclick="move()">
+                        <input type="submit" value="수정" class="btnConfirm btn green">
+                        <a href="javascript:window.history.back();" class="btn red" style="margin-left: 10xp">취소</a>
                     </div>
+                    <input type="hidden" name="id" th:value="${shipList.id}"> <!-- 수정후 다음페이지로 id를 넘기기 위해 hidden을 사용해 id를 넘김 -->
+                    <input type="hidden" name="orgName" th:value="${shipList.orgName}">
+                    <input type="hidden" name="savedFileName" th:value="${shipList.savedFileName}">
+                    <input type="hidden" name="savedFilePathName" th:value="${shipList.savedFilePathName}">
+                    <input type="hidden" name="savedFileSize" th:value="${shipList.savedFileSize}">
+                    <input type="hidden" name="folderName" th:value="${shipList.folderName}">
+                    <input type="hidden" name="ext" th:value="${shipList.ext}">
                 </form>
             </div>
 
@@ -331,9 +339,7 @@
         }
     }
 
-    function move() {
-        location.href = "/shipping/list";
-    }
+
 
 
 

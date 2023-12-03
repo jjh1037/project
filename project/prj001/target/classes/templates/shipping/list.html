@@ -20,17 +20,17 @@
             <li class="menu">
                 <a><i class="fa-regular fa-user"></i>회원관리</a>
                 <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
+                    <li><a href="">회원정보</a></li>
+                    <li><a href="">회원등록</a></li>
+                    <li><a href="">회원레벨/포인트</a></li>
                 </ul>
             </li>
             <li class="menu">
                 <a><i class="fa-regular fa-clipboard"></i>게시판관리</a>
                 <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
+                    <li><a href="">게시판목록</a></li>
+                    <li><a href="">게시판 수정/삭제</a></li>
+                    <li><a href="">게시판 카테고리</a></li>
                 </ul>
             </li>
             <li class="menu">
@@ -117,7 +117,9 @@
             <div class="main" id="main2">
                 <h3>운송사 검색결과</h3>
                 <div class="count">
-                    <p>전체결과 : <span><strong>10</strong></span>개</p>
+                    <form action="/shipping/list" method="get">
+                        <p>전체결과 : <span><strong>[[${cnt}]]</strong></span>개</p>
+                    </form>
                 </div>
 
                 <table>
@@ -136,7 +138,6 @@
                         <td>[[${shipList.id}]]</td>
                         <td>
                             <th:block th:if="${#strings.equals(shipList.domestic, 'true')}">
-
                                 <p>국내</p>
                             </th:block>
                             <th:block th:unless="${#strings.equals(shipList.domestic, 'true')}">
@@ -152,12 +153,48 @@
                         <td>[[${shipList.email}]]</td>
                         <td>
                             <a th:href="@{/shipping/view?(id=${shipList.id})}" class="btn blue">상세</a>
-                            <a href="" class="btn green">수정</a>
-                            <a href="" class="btn red">삭제</a>
+                            <a th:href="@{/shipping/update?(id=${shipList.id})}" class="btn green">수정</a>
+                            <a href="#" class="btn red" th:onclick="remove([[${shipList.id}]])">삭제</a>
                         </td>
                     </tr>
                     </tbody>
                 </table>
+
+                <div class="bottom">
+                    <div class="bottom-left">
+                        <a th:href="@{/shipping/write}" class="btn2 blue">신규등록</a>
+                    </div>
+
+                    <div class="bottom-center">
+                        <!-- preview arrow -->
+                        <a href="#" th:if="${page.page <= 1}">
+                        </a>
+                        <a th:href="@{/shipping/list?(page=${page.page-1})}" th:unless="${page.page <= 1}" style="margin: 10px">
+                            <i class="fa-solid fa-angle-left"></i>
+                        </a>
+
+                        <!-- page number -->
+                        <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/shipping/list?(page=${i})}">
+                            <th:block th:if="${page.page eq i}">
+                        <span style="color:#f00; margin-right: 3px;">
+                            <strong>[[${i}]]</strong>
+                        </span>
+                            </th:block>
+                            <th:block th:unless="${page.page eq i}">
+                        <span style="margin-right: 3px;">
+                            [[${i}]]
+                        </span>
+                            </th:block>
+                        </a>
+
+                        <!-- next arrow -->
+                        <a href="#" th:if="${page.page >= page.totalPage}">
+                        </a>
+                        <a th:href="@{/shipping/list?(page=${page.page+1})}" th:unless="${page.page >= page.totalPage}" style="margin: 10px">
+                            <i class="fa-solid fa-angle-right"></i>
+                        </a>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -172,6 +209,7 @@
 
 
 <script>
+    // ----------- left_container 기능 구현-----------
     $(document).ready(function(){
         $(".menu>a").click(function(){
             var submenu = $(this).next("ul");
@@ -196,6 +234,17 @@
     nonClick.forEach((e) => {
         e.addEventListener("click", handleClick)
     });
+
+    // ------------------------------------------------------------
+    function remove(id) {
+       if( confirm(id + "번 게시물을 삭제 하시겠습니까?") ) {
+            if(true) {
+            alert(id + "번의 게시물 삭제가 완료되었습니다.");
+                location.href = "/shipping/delete?id="+id;
+            }
+
+       }
+    }
 
 </script>
 </body>

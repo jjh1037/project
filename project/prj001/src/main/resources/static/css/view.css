@@ -257,6 +257,14 @@ section {
     background-color: #DB2828;
 }
 
+.f_table ul li {
+display: flex;
+}
+
+.f_table ul li p {
+margin-bottom: 15px;
+}
+
 
 
 

@@ -242,8 +242,6 @@ section {
     margin: 0 4px;
 }
 
-
-
 .btn {
     padding: 5px 12px;
     color: #fff;
@@ -251,6 +249,21 @@ section {
     font-size: 14px;
     cursor: pointer;
     text-align: center;
+}
+
+.btn2 {
+    padding: 5px 12px;
+    color:#fff;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor:pointer;
+}
+
+.bottom {
+    display: block;
+    display:flex;
+    justify-content: space-between;
+    padding: 10px;
 }
 
 .green {

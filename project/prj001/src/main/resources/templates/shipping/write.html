@@ -20,17 +20,17 @@
             <li class="menu">
                 <a><i class="fa-regular fa-user"></i>회원관리</a>
                 <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
+                    <li><a href="">회원정보</a></li>
+                    <li><a href="">회원등록</a></li>
+                    <li><a href="">회원레벨/포인트</a></li>
                 </ul>
             </li>
             <li class="menu">
                 <a><i class="fa-regular fa-clipboard"></i>게시판관리</a>
                 <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
+                    <li><a href="">게시판목록</a></li>
+                    <li><a href="">게시판 수정/삭제</a></li>
+                    <li><a href="">게시판 카테고리</a></li>
                 </ul>
             </li>
             <li class="menu">
@@ -91,14 +91,14 @@
                             <tr>
                                 <th>운송사명*</th>
                                 <td>
-                                    <input type="text" name="name" class="frm_input">
+                                    <input type="text" name="name" class="name">
                                 </td>
 
                             </tr>
                             <tr>
                                 <th>국내/해외*</th>
                                 <td>
-                                    <select name="domestic">
+                                    <select name="domestic" class="domestic">
                                         <option value="">----------------선택----------------</option>
                                         <option value="1">국내</option>
                                         <option value="0">해외</option>
@@ -106,41 +106,41 @@
                                 </td>
                                 <th>이메일*</th>
                                 <td>
-                                    <input type="text" name="email" class="frm_input">
+                                    <input type="text" name="email" class="email">
                                 </td>
                             </tr>
                             <tr>
                                 <th>전화번호*</th>
                                 <td>
-                                    <input type="text" name="comNum" class="frm_input">
+                                    <input type="text" name="comNum" class="comNum">
                                 </td>
                                 <th>팩스번호</th>
                                 <td>
-                                    <input type="text" name="faxNum" class="frm_input">
+                                    <input type="text" name="faxNum" class="faxNum">
                                 </td>
                             </tr>
                             <tr>
                                 <th>사업장 주소</th>
                                 <td>
                                     <p>
-                                        <input type="text" name="address1" class="frm_input">
+                                        <input type="text" name="address1" class="address1">
                                         주소1*
-                                        <input type="text" name="address2" class="frm_input">
+                                        <input type="text" name="address2" class="address2">
                                         상세주소
                                     </p>
                                     <p>
 
                                     </p>
                                     <p>
-                                        <input type="text" name="postcode" class="frm_input">
+                                        <input type="text" name="postcode" class="postcode">
                                         우편번호*
                                     </p>
                                     <p>
-                                        <input type="text" name="country" class="frm_input">
+                                        <input type="text" name="country" class="country">
                                         나라*
                                     </p>
                                     <p>
-                                        <input type="text" name="city" class="frm_input">
+                                        <input type="text" name="city" class="city">
                                         도시*
                                     </p>
                                 </td>
@@ -150,14 +150,55 @@
                                 <td>
                                     <input type="file" name="file" class="file_insert" />
                                 </td>
-
                             </tr>
                             </tbody>
                         </table>
                     </div>
+
                     <div class="btn_confirm">
-                        <input type="submit" value="확인" class="btn green">
-                        <input type="button" value="취소" class="btn red">
+                        <input type="submit" value="확인" class="btnConfirm btn green">
+                        <input type="button" value="취소" class="btn red" onclick="move()">
+                    </div>
+                </form>
+            </div>
+
+            <div class="main" id="main1">
+                <h3>담당자 정보  -- 미완성</h3>
+
+                <form name="fsearch" id="fsearch" method="get">
+                    <div class="f_table">
+                        <table>
+                            <colgroup>
+                                <col class="w100">
+                                <col>
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th>담당자명</th>
+                                <td>
+                                    <input type="text" name="frm_input" value="" class="frm_input">
+                                </td>
+
+                            </tr>
+                            <tr>
+                                <th>이메일</th>
+                                <td>
+                                    <input type="text" name="frm_input" value="" class="frm_input">
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>유선전화</th>
+                                <td>
+                                    <input type="text" name="frm_input" value="" class="frm_input">
+                                </td>
+                                <th>휴대전화</th>
+                                <td>
+                                    <input type="text" name="frm_input" value="" class="frm_input">
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
                     </div>
                 </form>
             </div>
@@ -199,6 +240,103 @@
     nonClick.forEach((e) => {
         e.addEventListener("click", handleClick)
     });
+
+    // 유효성 검사
+    // real onte
+    window.onload = function() { // $(function() {} )
+        document.querySelector("input[name=name]").focus();
+    }
+
+    let button = document.querySelector(".btnConfirm");
+    let name = document.querySelector(".name");
+    let domestic = document.querySelector(".domestic");
+    let email = document.querySelector(".email");
+    let comNum = document.querySelector(".comNum");
+    let address1 = document.querySelector(".address1");
+    let postcode = document.querySelector(".postcode");
+    let country = document.querySelector(".country");
+    let city = document.querySelector(".city");
+
+    function frmCheck() {
+        if(name.value == "") { // 운송사명
+            alert("이름을 입력하세요.");
+            name.classList.add("red_border");
+            name.focus();
+            return false;
+        }else {
+            name.classList.remove("red_border");
+        }
+
+        if(domestic.value == "") { // 국내/해외
+            alert("국내/해외를 선택하세요.");
+            domestic.classList.add("red_border");
+            domestic.focus();
+            return false;
+        }else {
+            domestic.classList.remove("red_border");
+        }
+
+        if(email.value == "") { // 이메일
+            alert("이메일 주소를 입력하세요.");
+            email.classList.add("red_border");
+            email.focus();
+            return false;
+        }else {
+            email.classList.remove("red_border");
+        }
+
+        if(comNum.value == "") { // 전화번호
+            alert("전화번호를 입력하세요.");
+            comNum.classList.add("red_border");
+            comNum.focus();
+            return false;
+        }else {
+            comNum.classList.remove("red_border");
+        }
+
+        if(address1.value == "") { // 주소1
+            alert("주소1를 입력하세요.");
+            address1.classList.add("red_border");
+            address1.focus();
+            return false;
+        }else {
+            address1.classList.remove("red_border");
+        }
+
+        if(postcode.value == "") { // 우편번호
+            alert("우편번호를 입력하세요.");
+            postcode.classList.add("red_border");
+            postcode.focus();
+            return false;
+        }else {
+            postcode.classList.remove("red_border");
+        }
+
+        if(country.value == "") { // 국가
+            alert("국가를 입력하세요.");
+            country.classList.add("red_border");
+            country.focus();
+            return false;
+        }else {
+            country.classList.remove("red_border");
+        }
+
+        if(city.value == "") { // 도시
+            alert("도시를 입력하세요.");
+            city.classList.add("red_border");
+            city.focus();
+            return false;
+        }else {
+            city.classList.remove("red_border");
+        }
+    }
+
+    function move() {
+        location.href = "/shipping/list";
+    }
+
+
+
 
 </script>
 </body>

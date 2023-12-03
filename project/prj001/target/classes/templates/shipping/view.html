@@ -20,17 +20,17 @@
             <li class="menu">
                 <a><i class="fa-regular fa-user"></i>회원관리</a>
                 <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
+                    <li><a href="">회원정보</a></li>
+                    <li><a href="">회원등록</a></li>
+                    <li><a href="">회원레벨/포인트</a></li>
                 </ul>
             </li>
             <li class="menu">
                 <a><i class="fa-regular fa-clipboard"></i>게시판관리</a>
                 <ul class="hide">
-                    <li><a href="">메뉴1</a></li>
-                    <li><a href="">메뉴2</a></li>
-                    <li><a href="">메뉴3</a></li>
+                    <li><a href="">게시판목록</a></li>
+                    <li><a href="">게시판 수정/삭제</a></li>
+                    <li><a href="">게시판 카테고리</a></li>
                 </ul>
             </li>
             <li class="menu">
@@ -121,13 +121,21 @@
                                     <ul>
                                         <li>
                                             <label>주소1*</label>
-                                            <p>[[${view.address1}]]</p>
-                                            <label>상세주소</label>
-                                            <p>[[${view.address2}]]</p>
+                                            <p>&nbsp;- [[${view.address1}]]</p>
+                                            <label style="margin-left: 30px;">상세주소</label>
+                                            <p>&nbsp;- [[${view.address2}]]</p>
                                         </li>
                                         <li>
                                             <label>우편번호*</label>
-                                            <p>[[${view.postcode}]]</p>
+                                            <p>&nbsp;- [[${view.postcode}]]</p>
+                                        </li>
+                                        <li>
+                                            <label>나라*</label>
+                                            <p>&nbsp;- [[${view.country}]]</p>
+                                        </li>
+                                        <li>
+                                            <label>도시*</label>
+                                            <p>&nbsp;- [[${view.city}]]</p>
                                         </li>
                                     </ul>
                                 </td>
@@ -136,6 +144,7 @@
                                 <th>운송사 이미지</th>
                                 <td>
                                     <img th:src="@{|/${view.folderName}/${view.savedFileName}|}" width="250" alt="">
+                                    <p>[[${view.orgName}]]</p>
 
                                     <!--                                    <input type="file" name="file" class="file_insert" />-->
                                 </td>
@@ -146,8 +155,8 @@
                     </div>
                     <div class="btn_confirm">
 <!--                        <input type="submit" value="확인" class="btn green">-->
-                        <a href="javascript:window.history.back();" class="btn green">확인</a>
-                        <input type="button" value="취소" class="btn red">
+                        <a th:href="@{/shipping/update?(id=${view.id})}" class="btn green">수정</a>
+                        <a href="javascript:window.history.back();" class="btn blue" style="margin-left: 10px">확인</a>
                     </div>
                 </form>
             </div>
