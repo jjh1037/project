@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <style>
+        .showbox {
+            width: 100px;
+            color: white;
+        }
+
+        .blue {
+            background-color: blue;
+
+        }
+        
+        .red {
+            background-color: red;
+        }
+
+        .white_man .nig2 {
+            color: green;
+        }
+
+
+        
+        
+    </style>
+</head>
+
+<body>
+    <form action="./">
+        <p>select one</p>
+        <label><input type="radio" name="world" value="1" checked>국내</label>
+        <label><input type="radio" name="world" value="0" >해외</label>
+    </form>
+
+    <div class="showbox blue">
+        <p>aaa</p>
+    </div>
+
+    <div class="white_man">
+        <div class="nig1">
+            <p>nig1 for 국내</p>
+        </div>
+    </div>
+    
+
+    <script>
+        // let domestic = document.querySelector(".domestic");
+        // let showbox =  document.querySelector(".showbox");
+
+        // domestic.addEventListener("change", (e) => {
+        //     e.preventDefault();
+
+        //     if (domestic.value == "1") {
+        //         showbox.classList.add("red");
+        //     }else if(domestic.value == "0") {
+        //         showbox.classList.add("blue");
+        //     }
+
+            
+        // });
+        
+
+        $(document).ready(function() {
+
+            $("input:radio[name='world']").change(function() {
+                if($("input:radio[name='world']:checked").val() == 1 ) {
+                    
+                    // 클래스 스타일 추가 제거
+                    $('.showbox').removeClass('red');
+                    $('.showbox').addClass('blue');
+
+                    // div 추가 제거
+                    // $(".white_man").append("<div class=\"nig1\"><p>nig1 for 국내</p></div>");
+                    $(".white_man").append(`
+                                            <div class="nig1">
+                                                <p>nig1 for 국내</p>
+                                            </div>
+                    `);
+                    $(".nig2").remove();
+                }
+                
+                if($("input:radio[name='world']:checked").val() == 0 ) {
+
+                    // 클래스 스타일 추가 제거
+                    $('.showbox').removeClass('blue');
+                    $('.showbox').addClass('red');
+
+                    // div 추가 제거
+                    $(".white_man").append("<div class=\"nig2\"><p>nig1 for 해외</p></div>");
+                    $(".nig1").remove();
+
+                    
+                }
+            });
+        });
+            
+    </script>
+    
+</body>
+</html>
