@@ -1,0 +1,280 @@
+
+<!doctype html>
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>커뮤니티 게시판</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .content {
+                width: 100%;
+                max-width: var(--main-width);
+                margin: 0px auto;
+                margin-top: 30px;
+                padding: 10px;
+            }
+
+            .content h2 {
+                color: var(--sub-color);
+            }
+
+            .content-wrapper {
+                width: 100%;
+                padding: 10px 0;
+                margin: 30px 0;
+                margin-top: -9px;
+                padding-top: 0;
+                text-align: center;
+            }
+
+            .posts-info {
+                display: flex;
+                justify-content: end;
+
+                padding: 6px 0;
+                position: relative;
+            }
+
+            .posts-info p {
+                vertical-align: bottom;
+                position: absolute;
+                left: 0;
+                bottom: 3px;
+                color: rgb(58, 58, 58);
+            }
+
+            .posts-info span {
+                font-weight: bold;
+            }
+
+            .posts-info button {
+                border: 1px solid rgb(207, 207, 207);
+                padding: 6px 13px;
+                color: var(--sub-color);
+                background-color: white;
+                cursor: pointer;
+                text-align: right;
+            }
+
+            .content-wrapper table {
+                width: 100%;
+                border-collapse: collapse;
+                text-align: center;
+                margin: 3px 0 10px;
+            }
+            .content-wrapper table a{
+                text-decoration: none;
+                color: black;
+            }
+            .content-wrapper table thead tr{
+                border-top: 2px solid rgb(187, 186, 186);
+                border-bottom: 2px solid rgb(187, 186, 186);
+                height: 35px;
+            }
+
+            .content-wrapper table tr {
+                height: 40px;
+            }
+            .content-wrapper table tbody tr {
+                border-bottom: 1px solid rgb(230, 230, 230);
+                font-size: 15px;
+            }
+
+            .content-wrapper table th,
+            td {
+                background-color: white;
+            }
+
+            .content-wrapper table tbody td:nth-child(3) {
+            }
+
+            .content-wrapper table td:nth-child(1) {
+                width: 15%;
+            }
+            .content-wrapper table td:nth-child(2) {
+                width: 15%;
+            }
+            .content-wrapper table td:nth-child(4) {
+                width: 15%;
+            }
+            .content-wrapper table td:nth-child(5) {
+                width: 15%;
+            }
+            .content-wrapper table td:nth-child(6) {
+                width: 25%;
+            }
+
+            .searchFrm {
+                display: flex;
+                align-items: center;
+                justify-content: end;
+                padding: 10px;
+            }
+
+            .searchFrm>* {
+                margin: 0 5px;
+            }
+
+            .searchFrm select {
+                width: 100px;
+                height: 36px;
+                padding: 4px;
+                border: 1px solid rgb(165, 165, 165);
+            }
+
+            .searchFrm input {
+                height: 36px;
+                width: 240px;
+                outline: 0;
+                border: 1px solid rgb(165, 165, 165);
+                padding: 8px;
+            }
+
+            .searchFrm .searchBtn {
+                width: 50px;
+                border: 1px solid rgb(165, 165, 165);
+                background-color: white;
+                font-family: 'Noto Sans KR', sans-serif;
+                color: var(--sub-color);
+            }
+
+    </style>
+</head>
+<body>
+<!------------------------- 네비메뉴시작 -------------------------->
+<header>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <p>ECORENT</p>
+            </a>
+            <img src="images/leaf.png" alt="">
+        </div>
+        <div class="menu">
+            <ul class="menu-ul">
+                <li class="menu-li">
+                    <a href="">카테고리</a>
+                    <div class="subMenu-wrap">
+                        <ul class="subMenu">
+                            <li><a href="">방송무대</a></li>
+                            <li><a href="/users/car">자동차</a></li>
+                            <li><a href="">상업용 가전</a></li>
+                            <li><a href="/users/office">IT 오피스</a></li>
+                            <li><a href="">악기</a></li>
+                            <li><a href="">현장장비</a></li>
+                            <li><a href="">기타장비</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="">운송회사</a></li>
+                <li><a href="/users/community/listPost">커뮤니티</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <p><i class="fa-solid fa-magnifying-glass"></i></p>
+            <input type="text">
+        </div>
+        <div class="sign">
+            
+                <a href="/users/member/login">로그인</a>
+                <a href="/users/member/join">회원가입</a>
+            
+            
+            
+        </div>
+    </nav>
+
+    <!------------------------- 네비메뉴 끝 -------------------------->
+
+
+
+</header>
+
+<div class="content">
+    <h2>운송사 목록</h2>
+    <div class="content-wrapper">
+        <!-- <div class="posts-info">
+            <p><span></span></p>
+        </div> -->
+
+
+        <form method="post" action="/users/community/listPost" class="searchFrm" style="margin-top: -1;">
+            <select class="searchType" id="searchType">
+                <option value="">국내</option>
+                <option value="concern">해외</option>
+            </select>
+            <select name="" id="">
+                <option value="">---지역별---</option>
+                <option value="">서울</option>
+                <option value="">경기</option>
+                <option value="">인천</option>
+                <option value="">강원</option>
+                <option value="">대전/충청</option>
+                <option value="">대구</option>
+                <option value="">부산/울산</option>
+                <option value="">경상</option>
+                <option value="">광주/전라/제주</option>
+            </select>
+            <input type="text" name="words" placeholder="검색어 입력">
+            <input type="submit" value="검색" class="searchBtn">
+            <input type="submit" value="초기화" class="searchBtn">
+        </form>
+        <table>
+            <thead>
+            <tr>
+                <td>운송사 ID</td>
+                <td>국내/해외</td>
+                <td>지역명</td>
+                <td>업체명</td>
+                <td>전화번호</td>
+                <td>견적요청 btn</td>
+            </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2</td>
+                    <td>국내</td>
+                    <td>부산</td>
+                    <td>부산용달</td>
+                    <td>051-123-4567</td>
+                    <td>
+                        <button style="width: 80px; height: 30px; background-color: var(--sub-color);
+                        border: none; border: 1px solid #ccc; padding: 0 5px; color: #eee;
+                        border-radius: 3px;" >견적요청</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>해외</td>
+                    <td>london</td>
+                    <td>london shipping</td>
+                    <td>+44 87453154</td>
+                    <td>
+                        <button style="width: 80px; height: 30px; background-color: var(--sub-color);
+                        border: none; border: 1px solid #ccc; padding: 0 5px; color: #eee;
+                        border-radius: 3px;" >견적요청</button>
+                    </td>
+                </tr>
+            </tbody>
+            <tbody>
+
+            </tbody>
+        </table>
+        
+    </div>
+</div>
+
+<script>
+  
+
+</script>
+</body>
+</html>
