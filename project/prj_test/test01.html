@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <style>
+        .showbox {
+            width: 100px;
+            color: white;
+        }
+
+        .blue {
+            background-color: blue;
+
+        }
+        
+        .red {
+            background-color: red;
+        }
+
+        .white_man .nig2 {
+            color: green;
+        }
+        
+        .nig1 {
+            background-color: tomato;
+        }
+
+        .nig2 {
+            background-color: aquamarine;
+        }
+        
+        
+    </style>
+</head>
+
+<body>
+    <form action="./">
+        <p>select one</p>
+        <label><input type="radio" name="world" value="1" checked>국내</label>
+        <label><input type="radio" name="world" value="0" >해외</label>
+        <select name="domestic" class="domestic">
+            <option value="1">국내</option>
+            <option value="0">해외</option>
+        </select>
+    </form>
+
+    <div class="showbox blue">
+        <p>aaa</p>
+    </div>
+
+    <div class="white_man">
+        <div class="nig1">
+            <p>nig1 for 국내</p>
+        </div>
+    </div>
+    
+    <div class="imaa">
+        <div class="gok">
+            <td class="address_td">
+                <div class="adr_btn">
+                    <input type="text" id="sample6_postcode" placeholder="우편번호" style="margin-bottom: 5px;">
+                    <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="margin-bottom: 5px;"><br> <!-- div처리! -->  
+                </div>
+                <input type="text" id="sample6_address" placeholder="주소" style="margin-bottom: 5px; width: 390px;"><br>
+                <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+                <input type="hidden" name="city" class="city" value="korea">
+            </td>
+        </div>
+
+        <!-- <div class="hae">
+            <td>
+                <p>
+                    <input type="text" name="address1" class="address1">
+                    주소1*
+                    <input type="text" name="address2" class="address2">
+                    상세주소
+                </p>
+                <p>
+
+                </p>
+                <p>
+                    <input type="text" name="postcode" class="postcode">
+                    우편번호*
+                </p>
+                <p>
+                    <input type="text" name="country" class="country">
+                    나라*
+                </p>
+                <p>
+                    <input type="text" name="city" class="city">
+                    도시*
+                </p>
+            </td>
+        </div> -->
+    </div>
+
+    <script>
+        // let domestic = document.querySelector(".domestic");
+        // let showbox =  document.querySelector(".showbox");
+
+        // domestic.addEventListener("change", (e) => {
+        //     e.preventDefault();
+
+        //     if (domestic.value == "1") {
+        //         showbox.classList.add("red");
+        //     }else if(domestic.value == "0") {
+        //         showbox.classList.add("blue");
+        //     }
+
+            
+        // });
+        
+
+        // $(document).ready(function() {
+
+        //     $("input:radio[name='world']").change(function() {
+        //         if($("input:radio[name='world']:checked").val() == 1 ) {
+                    
+        //             // 클래스 스타일 추가 제거
+        //             $('.showbox').removeClass('red');
+        //             $('.showbox').addClass('blue');
+
+        //             // div 추가 제거
+        //             // $(".white_man").append("<div class=\"nig1\"><p>nig1 for 국내</p></div>");
+        //             $(".white_man").append(`
+        //                                     <div class="nig1">
+        //                                         <p>nig1 for 국내</p>
+        //                                     </div>
+        //             `);
+        //             $(".nig2").remove();
+        //         }
+                
+        //         if($("input:radio[name='world']:checked").val() == 0 ) {
+
+        //             // 클래스 스타일 추가 제거
+        //             $('.showbox').removeClass('blue');
+        //             $('.showbox').addClass('red');
+
+        //             // div 추가 제거
+        //             $(".white_man").append("<div class=\"nig2\"><p>nig1 for 해외</p></div>");
+        //             $(".nig1").remove();
+
+                    
+        //         }
+        //     });
+        // });
+
+        $(document).ready(function() {
+
+            $(".domestic").change(function() {
+                // if($(".domestic").val() == 1) {
+                //     $('.showbox').removeClass('red');
+                //     $('.showbox').addClass('blue');
+                //     $(".white_man").append(`
+                //         <div class="nig1">
+                //             <p>nig1 for 국내</p>
+                //         </div>`);
+                //     $(".nig2").remove();
+                // } else if($(".domestic").val() == 0) {
+                //     $('.showbox').removeClass('blue');
+                //     $('.showbox').addClass('red');
+                //     $(".white_man").append(`
+                //         <div class="nig2">
+                //             <p>nig1 for 해외</p>
+                //         </div>`);
+                //     $(".nig1").remove();
+                // }
+
+                if($(".domestic").val() == 1) {
+                    $('.showbox').removeClass('red');
+                    $('.showbox').addClass('blue');
+                    $(".imaa").append(`
+                    <div class="gok">
+                        <td class="address_td">
+                            <div class="adr_btn">
+                                <input type="text" id="sample6_postcode" placeholder="우편번호" style="margin-bottom: 5px;">
+                                <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기" style="margin-bottom: 5px;"><br> <!-- div처리! -->  
+                            </div>
+                            <input type="text" id="sample6_address" placeholder="주소" style="margin-bottom: 5px; width: 390px;"><br>
+                            <input type="text" id="sample6_detailAddress" placeholder="상세주소">
+                            <input type="text" id="sample6_extraAddress" placeholder="참고항목">
+                            <input type="hidden" name="city" class="city" value="korea">
+                        </td>
+                    </div>
+                        `);
+                    $(".hae").remove();
+                } else if($(".domestic").val() == 0) {
+                    $('.showbox').removeClass('blue');
+                    $('.showbox').addClass('red');
+                    $(".imaa").append(`
+                    <div class="hae">
+                        <td>
+                            <p>
+                                <input type="text" name="address1" class="address1">
+                                주소1*
+                                <input type="text" name="address2" class="address2">
+                                상세주소
+                            </p>
+                            <p>
+
+                            </p>
+                            <p>
+                                <input type="text" name="postcode" class="postcode">
+                                우편번호*
+                            </p>
+                            <p>
+                                <input type="text" name="country" class="country">
+                                나라*
+                            </p>
+                            <p>
+                                <input type="text" name="city" class="city">
+                                도시*
+                            </p>
+                        </td>
+                    </div>
+                        `);
+                    $(".gok").remove();
+                }
+
+            });
+
+
+        });
+            
+    </script>
+    
+</body>
+</html>
