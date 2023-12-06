@@ -144,9 +144,9 @@
                                                 <input type="button" onclick="sample6_execDaumPostcode()"
                                                     value="우편번호 찾기" style="margin-bottom: 5px;"><br>
                                                 <input type="text" id="sample6_extraAddress" class="city"
-                                                    placeholder="도시" style="width: 110px;">
+                                                    placeholder="도시" style="width: 130px;">
                                                 <input type="text" id="sample6_postcode" class="postcode"
-                                                    placeholder="우편번호" style="margin-bottom: 5px; width: 110px;">
+                                                    placeholder="우편번호" style="margin-bottom: 5px; width: 90px;">
                                                 <input type="text" id="sample6_address" class="address1"
                                                     placeholder="주소" style="margin-bottom: 5px; width: 390px;"><br>
                                                 <input type="text" id="sample6_detailAddress" class="address2"
@@ -154,32 +154,6 @@
                                                 <input type="hidden" name="country" class="country" value="korea">
                                             </div>
                                         </td>
-
-                                        <!-- 
-                                    <div class="address_out">
-                                        <p>
-                                            <input type="text" name="address1" class="address1">
-                                            주소1*
-                                            <input type="text" name="address2" class="address2">
-                                            상세주소
-                                        </p>
-                                        <p>
-
-                                        </p>
-                                        <p>
-                                            <input type="text" name="postcode" class="postcode">
-                                            우편번호*
-                                        </p>
-                                        <p>
-                                            <input type="text" name="country" class="country">
-                                            나라*
-                                        </p>
-                                        <p>
-                                            <input type="text" name="city" class="city">
-                                            도시*
-                                        </p>
-                                    </div>
-                                 -->
                                     </tr>
 
                                     <!--  @@@@@@@@@@@@@@@@@@@@@@ 주소 @@@@@@@@@@@@@@@@@@@@@@ -->
@@ -441,7 +415,8 @@
                 `);
                     $(".address_out").remove();
 
-                } else if ($(".domestic").val() == 0) {
+                }
+                if ($(".domestic").val() == 0) {
                     $(".address_selected").append(`
                         <div class="address_out">
                             <p>
@@ -449,9 +424,6 @@
                                 주소1*
                                 <input type="text" name="address2" class="address2">
                                 상세주소
-                            </p>
-                            <p>
-
                             </p>
                             <p>
                                 <input type="text" name="postcode" class="postcode">
