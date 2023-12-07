@@ -4,7 +4,12 @@ left_container 에러 및 미완성
 - 메뉴 늘릴시 div높이 같이 안늘어남
 
 write
+국내 입력창
 ![image](https://github.com/jjh1037/project/assets/130326342/81df255a-db93-4957-bea7-82d480c84752)
+
+해외 입력창
+![image](https://github.com/jjh1037/project/assets/130326342/965311b3-366b-46b9-bd76-4ca5b4763c7e)
+
 
 - 유효성 검사 - 완료
 - 취소 버튼 - 완료
