@@ -36,12 +36,13 @@ update
    select box에 선택 대신 해당 값 selected로 출력 가능하게 만들기
 - 
 
-API(?)
-- 국가코드 API
-- 메일 API
+사용한 API
+- 카카오 주소검색
 
 ---- USER PAGE ----
 운송사 LIST 
+![image](https://github.com/jjh1037/project/assets/130326342/3b97ea28-365b-4272-a4a8-f278e05cc8dd)
+
 - db 연결 및 list 구현
 - 견적 요청 페이지 링크
   
