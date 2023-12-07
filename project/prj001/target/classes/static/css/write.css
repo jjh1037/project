@@ -195,7 +195,7 @@ section {
     height: 30px;
     padding: 0 10px
 }
-
+/*
 #main1 p {
     margin-bottom: 3px;
     margin-right: 3px;
@@ -209,12 +209,15 @@ section {
     margin-bottom: 5px;
 }
 
-#main1 p {
-    font-size: 13px;
-}
+
 
 #main1 p input:nth-child(2) {
     margin-left: 50px ;
+}
+*/
+
+#main1 p {
+    font-size: 14px;
 }
 
 #main1 .file_insert {

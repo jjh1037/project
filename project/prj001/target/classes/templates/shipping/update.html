@@ -89,13 +89,6 @@
                             </colgroup>
                             <tbody>
                             <tr>
-                                <th>운송사명*</th>
-                                <td>
-                                    <input type="text" name="name" class="name" th:value="${shipList.name}">
-                                </td>
-
-                            </tr>
-                            <tr>
                                 <th>국내/해외*</th>
                                 <td>
                                     <select name="domestic" class="domestic">
@@ -103,6 +96,12 @@
                                         <option value="1">국내</option>
                                         <option value="0">해외</option>
                                     </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>운송사명*</th>
+                                <td>
+                                    <input type="text" name="name" class="name" th:value="${shipList.name}">
                                 </td>
                                 <th>이메일*</th>
                                 <td>

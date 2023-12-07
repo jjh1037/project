@@ -7,9 +7,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>운송사 관리 > 운송사 신규등록</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/write.css}" />
 </head>
+<style>
+    span {
+        color: rgb(220, 20, 20);
+    }
+
+    p {
+        margin: 0;
+    }
+</style>
 <body>
 <div class="container">
     <!-- --------------------- left_container --------------------- -->
@@ -89,28 +99,26 @@
                             </colgroup>
                             <tbody>
                             <tr>
-                                <th>운송사명*</th>
-                                <td>
-                                    <input type="text" name="name" class="name">
-                                </td>
-
-                            </tr>
-                            <tr>
-                                <th>국내/해외*</th>
+                                <th>국내/해외</th>  <!-- @@@@@@@@@@@@@@@@ select box @@@@@@@@@@@@@@@@ -->
                                 <td>
                                     <select name="domestic" class="domestic">
-                                        <option value="">----------------선택----------------</option>
                                         <option value="1">국내</option>
                                         <option value="0">해외</option>
                                     </select>
                                 </td>
-                                <th>이메일*</th>
+                            </tr>
+                            <tr>
+                                <th>운송사명<span>*</span></th>
+                                <td>
+                                    <input type="text" name="name" class="name">
+                                </td>
+                                <th>이메일<span>*</span></th>
                                 <td>
                                     <input type="text" name="email" class="email">
                                 </td>
                             </tr>
                             <tr>
-                                <th>전화번호*</th>
+                                <th>전화번호 <span>*</span></th>
                                 <td>
                                     <input type="text" name="comNum" class="comNum">
                                 </td>
@@ -120,29 +128,21 @@
                                 </td>
                             </tr>
                             <tr>
-                                <th>사업장 주소</th>
-                                <td>
-                                    <p>
-                                        <input type="text" name="address1" class="address1">
-                                        주소1*
-                                        <input type="text" name="address2" class="address2">
-                                        상세주소
-                                    </p>
-                                    <p>
-
-                                    </p>
-                                    <p>
-                                        <input type="text" name="postcode" class="postcode">
-                                        우편번호*
-                                    </p>
-                                    <p>
-                                        <input type="text" name="country" class="country">
-                                        나라*
-                                    </p>
-                                    <p>
-                                        <input type="text" name="city" class="city">
-                                        도시*
-                                    </p>
+                                <th>사업장 주소<span>*</span></th> <!-- @@@@@@@@@ 주소 @@@@@@@@@ -->
+                                <td class="address_selected">
+                                    <div class="address_in">
+                                        <input type="button" onclick="sample6_execDaumPostcode()"
+                                               value="우편번호 찾기" style="margin-bottom: 5px;"><br>
+                                        <input type="text" id="sample6_extraAddress" name="city" class="city"
+                                               placeholder="도시" style="width: 110px;">
+                                        <input type="text" id="sample6_postcode" name="postcode" class="postcode"
+                                               placeholder="우편번호" style="margin-bottom: 5px; width: 110px;">
+                                        <input type="text" id="sample6_address" name="address1" class="address1"
+                                               placeholder="주소" style="margin-bottom: 5px; width: 390px;"><br>
+                                        <input type="text" id="sample6_detailAddress" name="address2" class="address2"
+                                               placeholder="상세주소" style="margin-bottom: 5px; width: 390px;">
+                                        <input type="hidden" name="country" class="country" value="korea">
+                                    </div>
                                 </td>
                             </tr>
                             <tr class="img_file">
@@ -215,6 +215,7 @@
 
 
 <script>
+    //  ---------- 메뉴 슬라이드 표시 스크립트 ----------
     $(document).ready(function(){
         $(".menu>a").click(function(){
             // $(this).next("ul").toggleClass("hide"); // No transition
@@ -228,6 +229,7 @@
         });
     });
 
+    // ---------- left_container 클릭 시 색 변경 이벤트 스크립트 ----------
     const nonClick = document.querySelectorAll(".menu a");
 
     function handleClick(event) {
@@ -241,99 +243,175 @@
         e.addEventListener("click", handleClick)
     });
 
-    // 유효성 검사
-    // real onte
+    // select box 변환시 주소 입력 변환 이벤트 스크립트
+        $(document).ready(function () {
+            $(".domestic").change(function () {
+                if ($(".domestic").val() == 1) {
+                    $(".address_selected").append(`
+                        <div class="address_in">
+                            <input type="button" onclick="sample6_execDaumPostcode()"
+                                   value="우편번호 찾기" style="margin-bottom: 5px;"><br>
+                            <input type="text" id="sample6_extraAddress" name="city" class="city"
+                                   placeholder="도시" style="width: 110px;">
+                            <input type="text" id="sample6_postcode" name="postcode" class="postcode"
+                                   placeholder="우편번호" style="margin-bottom: 5px; width: 110px;">
+                            <input type="text" id="sample6_address" name="address1" class="address1"
+                                   placeholder="주소" style="margin-bottom: 5px; width: 390px;"><br>
+                            <input type="text" id="sample6_detailAddress" name="address2" class="address2"
+                                   placeholder="상세주소" style="margin-bottom: 5px; width: 390px;">
+                            <input type="hidden" name="country" class="country" value="korea">
+                        </div>
+                `);
+                    $(".address_out").remove();
+
+                }
+                if ($(".domestic").val() == 0) {
+                    $(".address_selected").append(`
+                        <div class="address_out">
+                            <div class="adr_wrap" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                <input type="text" name="address1" class="address1"><P style="margin-left: 10px;"> 주소1* </P>
+                                <input type="text" name="address2" class="address2" style="margin-left: 30px;"><P style="margin-left: 10px;">상세주소</P>
+                            </div>
+                            <div class="postcode_wrap" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                <input type="text" name="postcode" class="postcode" style="margin-right: 10px;"><p>우편번호*</p>
+                            </div>
+                            <div class="country_wrap" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                <input type="text" name="country" class="country" style="margin-right: 10px;"><p>나라*</p>
+                            </div>
+                            <div class="city_wrap" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                <input type="text" name="city" class="city" style="margin-right: 10px;"><p>도시*</p>
+                            </div>
+                        </div>
+                `);
+                    $(".address_in").remove();
+                }
+            });
+
+        });
+
+    // ---------- 유효성 검사 ----------
     window.onload = function() { // $(function() {} )
         document.querySelector("input[name=name]").focus();
     }
 
-    let button = document.querySelector(".btnConfirm");
-    let name = document.querySelector(".name");
-    let domestic = document.querySelector(".domestic");
-    let email = document.querySelector(".email");
-    let comNum = document.querySelector(".comNum");
-    let address1 = document.querySelector(".address1");
-    let postcode = document.querySelector(".postcode");
-    let country = document.querySelector(".country");
-    let city = document.querySelector(".city");
-
     function frmCheck() {
-        if(name.value == "") { // 운송사명
+        if ($(".name").val() == "") { // 운송사명
             alert("이름을 입력하세요.");
-            name.classList.add("red_border");
-            name.focus();
+            $(".name").addClass("red_border");
+            $(".name").focus();
             return false;
-        }else {
-            name.classList.remove("red_border");
+        } else {
+            $(".name").removeClass("red_border");
         }
 
-        if(domestic.value == "") { // 국내/해외
-            alert("국내/해외를 선택하세요.");
-            domestic.classList.add("red_border");
-            domestic.focus();
-            return false;
-        }else {
-            domestic.classList.remove("red_border");
-        }
 
-        if(email.value == "") { // 이메일
+        if ($(".email").val() == "") { // 이메일
             alert("이메일 주소를 입력하세요.");
-            email.classList.add("red_border");
-            email.focus();
+            $(".email").addClass("red_border");
+            $(".email").focus();
             return false;
-        }else {
-            email.classList.remove("red_border");
+        } else {
+            $(".email").removeClass("red_border");
         }
 
-        if(comNum.value == "") { // 전화번호
+        if ($(".comNum").val() == "") { // 전화번호
             alert("전화번호를 입력하세요.");
-            comNum.classList.add("red_border");
-            comNum.focus();
+            $(".comNum").addClass("red_border");
+            $(".comNum").focus();
             return false;
-        }else {
-            comNum.classList.remove("red_border");
+        } else {
+            $(".comNum").removeClass("red_border");
         }
 
-        if(address1.value == "") { // 주소1
+        if ($(".address1").val() == "") { // 주소1
             alert("주소1를 입력하세요.");
-            address1.classList.add("red_border");
-            address1.focus();
+            $(".address1").addClass("red_border");
+            $(".address1").focus();
             return false;
-        }else {
-            address1.classList.remove("red_border");
+        } else {
+            $(".address1").removeClass("red_border");
         }
 
-        if(postcode.value == "") { // 우편번호
+        if ($(".postcode").val() == "") { // 우편번호
             alert("우편번호를 입력하세요.");
-            postcode.classList.add("red_border");
-            postcode.focus();
+            $(".postcode").addClass("red_border");
+            $(".postcode").focus();
             return false;
-        }else {
-            postcode.classList.remove("red_border");
+        } else {
+            $(".postcode").removeClass("red_border");
         }
 
-        if(country.value == "") { // 국가
+        if ($(".country").val() == "") { // 국가
             alert("국가를 입력하세요.");
-            country.classList.add("red_border");
-            country.focus();
+            $(".country").addClass("red_border");
+            $(".country").focus();
             return false;
-        }else {
-            country.classList.remove("red_border");
+        } else {
+            $(".country").removeClass("red_border");
         }
 
-        if(city.value == "") { // 도시
+        if ($(".city").val() == "") { // 도시
             alert("도시를 입력하세요.");
-            city.classList.add("red_border");
-            city.focus();
+            $(".city").addClass("red_border");
+            $(".city").focus();
             return false;
-        }else {
-            city.classList.remove("red_border");
+        } else {
+            $(".city").removeClass("red_border");
         }
+    }
+
+    // 카카오 주소 api
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function (data) {
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                if (data.userSelectedType === 'R') { // 참고항목
+                    if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) { // 동/로/가
+                        extraAddr += data.bname;
+                    }
+                    if (data.buildingName !== '' && data.apartment === 'Y') { // 건물명
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    if (extraAddr !== '') { // 추가 참고항목
+                        extraAddr = '(' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_extraAddress").value = '';
+
+                } else {
+                    document.getElementById("sample6_extraAddress").value = '';
+                }
+
+                // 문자열 자르기
+                var city = addr.substr(0, addr.indexOf(' '));
+                var realAddr = addr.substr(addr.indexOf(' ') + 1, addr.length);
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = realAddr + ', ' + extraAddr;
+                document.getElementById("sample6_extraAddress").value = city;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+            }
+        }).open();
     }
 
     function move() {
         location.href = "/shipping/list";
     }
+
+
+
+
+
 
 
 
