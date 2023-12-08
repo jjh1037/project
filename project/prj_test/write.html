@@ -107,7 +107,7 @@
                                         <th>국내/해외<span>*</span></th>
                                         <!-- @@@@@@@@@@@@@@@@select box@@@@@@@@@@@@@@@@ -->
                                         <td>
-                                            <select name="domestic" class="domestic">
+                                            <select name="domestic" class="domestic" style="width: 200px;">
                                                 <option value="1">국내</option>
                                                 <option value="0">해외</option>
                                             </select>
@@ -140,19 +140,24 @@
                                     <tr>
                                         <th>사업장 주소<span>*</span></th>
                                         <td class="address_selected">
-                                            <div class="address_in">
-                                                <input type="button" onclick="sample6_execDaumPostcode()"
-                                                    value="우편번호 찾기" style="margin-bottom: 5px;"><br>
-                                                <input type="text" id="sample6_extraAddress" class="city"
-                                                    placeholder="도시" style="width: 130px;">
-                                                <input type="text" id="sample6_postcode" class="postcode"
-                                                    placeholder="우편번호" style="margin-bottom: 5px; width: 90px;">
-                                                <input type="text" id="sample6_address" class="address1"
-                                                    placeholder="주소" style="margin-bottom: 5px; width: 390px;"><br>
-                                                <input type="text" id="sample6_detailAddress" class="address2"
-                                                    placeholder="상세주소" style="margin-bottom: 5px; width: 390px;">
-                                                <input type="hidden" name="country" class="country" value="korea">
+                                            <div class="address_out">
+                                                <div class="adr_wrap" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                                    <input type="text" name="address1" class="address1"><P style="margin-left: 10px;"> 주소1* </P>
+                                                    <input type="text" name="address2" class="address2" style="margin-left: 30px;"><P style="margin-left: 10px;">상세주소</P>
+                                                </div>
+                                                <div class="postcode_wrap" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                                    <input type="text" name="postcode" class="postcode" style="margin-right: 10px;"><p>우편번호*</p>
+                                                </div>
+                                                <div class="country_wrap" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                                    <input type="text" name="country" class="country"><p>나라*</p>
+                                                </div>
+                                                <div class="city_wrap" style="display: flex; align-items: center; margin-bottom: 5px;">
+                                                    <input type="text" name="city" class="city"><p>도시*</p>
+                                                </div>
+                                                <!-- #main p margin 삭제 -->
+                                                    
                                             </div>
+                                            
                                         </td>
                                     </tr>
 
@@ -175,7 +180,7 @@
                 </div>
 
                 <div class="main" id="main1">
-                    <h3>담당자 정보 -- 미완성</h3>
+                    <h3>담당자 정보</h3>
 
                     <form name="fsearch" id="fsearch" method="get">
                         <div class="f_table">
@@ -240,6 +245,59 @@
             });
         });
 
+        // ------------------------------------------------------
+
+        // select box 변환시 주소 입력 변환 이벤트 스크립트
+        $(document).ready(function () {
+            $(".domestic").change(function () {
+                if ($(".domestic").val() == 1) {
+                    $(".address_selected").append(`
+                        <div class="address_in">
+                            <input type="button" onclick="sample6_execDaumPostcode()"
+                                value="우편번호 찾기" style="margin-bottom: 5px;"><br>
+                            <input type="text" id="sample6_extraAddress" class="city"
+                                placeholder="도시" style="width: 110px;">
+                            <input type="text" id="sample6_postcode" class="postcode"
+                                placeholder="우편번호" style="margin-bottom: 5px; width: 110px;">
+                            <input type="text" id="sample6_address" class="address1"
+                                placeholder="주소" style="margin-bottom: 5px; width: 390px;"><br>
+                            <input type="text" id="sample6_detailAddress" class="address2"
+                                placeholder="상세주소" style="margin-bottom: 5px; width: 390px;">
+                            <input type="hidden" name="country" class="country" value="korea">
+                        </div>
+                `);
+                    $(".address_out").remove();
+
+                }
+                if ($(".domestic").val() == 0) {
+                    $(".address_selected").append(`
+                        <div class="address_out">
+                            <p>
+                                <input type="text" name="address1" class="address1">
+                                주소1*
+                                <input type="text" name="address2" class="address2">
+                                상세주소
+                            </p>
+                            <p>
+                                <input type="text" name="postcode" class="postcode">
+                                우편번호*
+                            </p>
+                            <p>
+                                <input type="text" name="country" class="country">
+                                나라*
+                            </p>
+                            <p>
+                                <input type="text" name="city" class="city">
+                                도시*
+                            </p>
+                        </div>
+                `);
+                    $(".address_in").remove();
+                }
+            });
+
+        });
+        
         const nonClick = document.querySelectorAll(".menu a");
 
         function handleClick(event) {
@@ -259,87 +317,71 @@
             document.querySelector("input[name=name]").focus();
         }
 
-        let button = document.querySelector(".btnConfirm");
-        let name = document.querySelector(".name");
-        let domestic = document.querySelector(".domestic");
-        let email = document.querySelector(".email");
-        let comNum = document.querySelector(".comNum");
-        let address1 = document.querySelector(".address1");
-        let postcode = document.querySelector(".postcode");
-        let country = document.querySelector(".country");
-        let city = document.querySelector(".city");
+        
 
         function frmCheck() {
-            if (name.value == "") { // 운송사명
+            if ($(".name").val() == "") { // 운송사명
                 alert("이름을 입력하세요.");
-                name.classList.add("red_border");
-                name.focus();
+                $(".name").addClass("red_border");
+                $(".name").focus();
                 return false;
             } else {
-                name.classList.remove("red_border");
+                $(".name").removeClass("red_border");
             }
+          
 
-            if (domestic.value == "") { // 국내/해외
-                alert("국내/해외를 선택하세요.");
-                domestic.classList.add("red_border");
-                domestic.focus();
-                return false;
-            } else {
-                domestic.classList.remove("red_border");
-            }
-
-            if (email.value == "") { // 이메일
+            if ($(".email").val() == "") { // 이메일
                 alert("이메일 주소를 입력하세요.");
-                email.classList.add("red_border");
-                email.focus();
+                $(".email").addClass("red_border");
+                $(".email").focus();
                 return false;
             } else {
-                email.classList.remove("red_border");
+                $(".email").removeClass("red_border");
             }
 
-            if (comNum.value == "") { // 전화번호
+            if ($(".comNum").val() == "") { // 전화번호
                 alert("전화번호를 입력하세요.");
-                comNum.classList.add("red_border");
-                comNum.focus();
+                $(".comNum").addClass("red_border");
+                $(".comNum").focus();
                 return false;
             } else {
-                comNum.classList.remove("red_border");
+                $(".comNum").removeClass("red_border");
             }
 
-            if (address1.value == "") { // 주소1
+            if ($(".address1").val() == "") { // 주소1
                 alert("주소1를 입력하세요.");
-                address1.classList.add("red_border");
-                address1.focus();
+                $(".address1").addClass("red_border");
+                $(".address1").focus();
                 return false;
             } else {
-                address1.classList.remove("red_border");
+                $(".address1").removeClass("red_border");
             }
 
-            if (postcode.value == "") { // 우편번호
+            if ($(".postcode").val() == "") { // 우편번호
                 alert("우편번호를 입력하세요.");
-                postcode.classList.add("red_border");
-                postcode.focus();
+                $(".postcode").addClass("red_border");
+                $(".postcode").focus();
                 return false;
             } else {
-                postcode.classList.remove("red_border");
+                $(".postcode").removeClass("red_border");
             }
 
-            if (country.value == "") { // 국가
+            if ($(".country").val() == "") { // 국가
                 alert("국가를 입력하세요.");
-                country.classList.add("red_border");
-                country.focus();
+                $(".country").addClass("red_border");
+                $(".country").focus();
                 return false;
             } else {
-                country.classList.remove("red_border");
+                $(".country").removeClass("red_border");
             }
 
-            if (city.value == "") { // 도시
+            if ($(".city").val() == "") { // 도시
                 alert("도시를 입력하세요.");
-                city.classList.add("red_border");
-                city.focus();
+                $(".city").addClass("red_border");
+                $(".city").focus();
                 return false;
             } else {
-                city.classList.remove("red_border");
+                $(".city").removeClass("red_border");
             }
         }
 
@@ -394,56 +436,7 @@
             }).open();
         }
 
-        $(document).ready(function () {
-
-            $(".domestic").change(function () {
-                if ($(".domestic").val() == 1) {
-                    $(".address_selected").append(`
-                        <div class="address_in">
-                            <input type="button" onclick="sample6_execDaumPostcode()"
-                                value="우편번호 찾기" style="margin-bottom: 5px;"><br>
-                            <input type="text" id="sample6_extraAddress" class="city"
-                                placeholder="도시" style="width: 110px;">
-                            <input type="text" id="sample6_postcode" class="postcode"
-                                placeholder="우편번호" style="margin-bottom: 5px; width: 110px;">
-                            <input type="text" id="sample6_address" class="address1"
-                                placeholder="주소" style="margin-bottom: 5px; width: 390px;"><br>
-                            <input type="text" id="sample6_detailAddress" class="address2"
-                                placeholder="상세주소" style="margin-bottom: 5px; width: 390px;">
-                            <input type="hidden" name="country" class="country" value="korea">
-                        </div>
-                `);
-                    $(".address_out").remove();
-
-                }
-                if ($(".domestic").val() == 0) {
-                    $(".address_selected").append(`
-                        <div class="address_out">
-                            <p>
-                                <input type="text" name="address1" class="address1">
-                                주소1*
-                                <input type="text" name="address2" class="address2">
-                                상세주소
-                            </p>
-                            <p>
-                                <input type="text" name="postcode" class="postcode">
-                                우편번호*
-                            </p>
-                            <p>
-                                <input type="text" name="country" class="country">
-                                나라*
-                            </p>
-                            <p>
-                                <input type="text" name="city" class="city">
-                                도시*
-                            </p>
-                        </div>
-                `);
-                    $(".address_in").remove();
-                }
-            });
-
-        });
+        
 
 
 

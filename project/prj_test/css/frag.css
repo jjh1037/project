@@ -1,7 +1,20 @@
 @charset 'utf-8';
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
 
 /* ---------------------------------- reset css ---------------------------------- */
+:root {
+    --btn-color-green: #1CC88A;
+    --btn-color-red: #fc5f64;
+    --btn-color-blue: #1A6DFF;
+    --btn-color-gray: #ACB8C9;
+
+    --left_container-bg-color: #363b3e;
+
+    /* 로고 컬러 */
+    --main-color: rgb(245, 188, 0);;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -20,13 +33,11 @@ a {
 
 body {
     font-family: 'Noto Sans KR', sans-serif;
-    /* min-width: 100%; */
     min-height: 100%;
     background-color: rgb(236, 240, 244);
 }
 
 table {
-    /* border-spacing: 0px; */
     border-collapse: collapse;
     border-style: none;
     width: 100%;
@@ -40,36 +51,29 @@ td {
 section {
     margin-left: 204px;
 }
-/* ---------------------------------- reset css ---------------------------------- */
-/* ---------------------------------- container ---------------------------------- */
 
-/* .container {
-} */
+hr {
+    border:0;
+    border-top:1px solid #ccc;
+    margin:0;
+    height:1px;
+}
 
-/* ---------------------------------- container ---------------------------------- */
+.container {
+    display: inline-block;
+}
+/* -------------------------------------------------------------------- */
 
-/* ---------------------------------- left_container //미완성 ---------------------------------- */
-/* back-ground 안늘어나는거 */
-/* click이벤트중 한번 더 클릭시 색 원래대로 돌아오게 하기 */
+/* ---------------------------------- left_container ---------------------------------- */
 
 .left_container {
-    float: left;
-    width: 204px;
+    position: fixed;
+    justify-content: flex-end;
+    width: 11%;
     min-height: 100vh;
     padding: 10px 10px 0 10px;
-    background-color: rgb(53, 53, 53);
+    background-color: var(--left_container-bg-color);
     box-shadow: 0 0 3px 1px #ccc;
-}
-
-.left_container h2 {
-    padding-bottom: 10px;
-    border-bottom: 1px solid #ccc;
-}
-
-.left_container h2 a{
-    /* text-align: center; */
-    color: white;
-    padding-left: 6px;
 }
 
 .left_container p {
@@ -104,37 +108,62 @@ section {
     display: none;
 }
 
-.click { /* 버튼 클릭 이벤트 */
+.logo_wrap{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.logo_wrap h2 a{
+    font-size: 36px;
+    letter-spacing: 0.08em;
+    color: var(--main-color);
+    font-family: 'Bebas Neue', sans-serif;
+
+}
+.logo_wrap img {
+    width: 21px;
+    margin-top: -5px;
+}
+
+.selected { /* 페이지 클릭 이벤트 - 해당 페이지의 li 배경색 바뀜  */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.click { /* 버튼 클릭 이벤트 - 배경색 바뀜 */
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
     transition: 0.2s;
 }
-
-.selected {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 4px;
+/* -------------------------------------------------------------------- */
+section {
+    width: 94%;
 }
-
-/* ---------------------------------- left_container ---------------------------------- */
 
 /* ---------------------------------- nav ---------------------------------- */
 .nav_container {
+    width: 100%;
     height: 50px;
     background-color: white;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
 }
 
 .nav_container h2 {
-    margin-left: 30px;
     color: rgb(80, 80, 80);
-
 }
-/* ---------------------------------- nav ---------------------------------- */
+/* -------------------------------------------------------------------- */
 
 /* ---------------------------------- main_container ---------------------------------- */
+
+
 .main_container {
-    /* display: inline-block; */
+    display: inline-block;
     width: 100%;
     padding: 30px;
 }
@@ -151,13 +180,13 @@ section {
     /* color: #252525; */
     color: rgb(50, 50, 50);
 }
+/* -------------------------------------------------------------------- */
 
-
-/* ---------------------------------- main_container ---------------------------------- */
-.main_container {
-    position: relative;
-}
 /* ---------------------------------- main1 ---------------------------------- */
+#main1 tr{
+    border-bottom: 1px solid #dcdcdc;
+}
+
 #main1 th, #main1 td{
     padding: 8px 14px;
     height: 50px;
@@ -165,17 +194,13 @@ section {
 }
 
 #main1 th {
-    width: 10%;
     background-color: #eee;
+    width: 10%;
     line-height: 1.3rem;
 }
 
 #main1 td {
     width: 40%;
-}
-
-#main1 tr {
-    border-bottom: 1px solid #dcdcdc;
 }
 
 #main1 .w100 {
@@ -187,8 +212,8 @@ section {
 } */
 
 #main1 select{
+    width: 193px;
     height: 30px;
-    width: 200px;
 }
 
 #main1 input {
@@ -196,39 +221,13 @@ section {
     padding: 0 10px
 }
 
-#main1 p {
-    margin-bottom: 3px;
-    margin-right: 3px;
-}
-
-#main1 p:first-child {
-    margin-top: 5px;
-}
-
-#main1 p:last-child {
-    margin-bottom: 5px;
-}
-
-#main1 p {
-    font-size: 13px;
-}
-
-#main1 p input:nth-child(2) {
-    margin-left: 50px ;
-}
-
-#main1 .file_insert {
-    padding: 0;
-}
-
-.btn_confirm {
+.btn_wrap {
     display: flex;
-    justify-content: center;
     align-items: center;
-    height: 60px;
+    height: 40px;
 }
 
-.btn_confirm input {
+.btn_wrap input {
     border: none;
     margin: 0 4px;
 }
@@ -241,53 +240,49 @@ section {
     cursor: pointer;
 }
 
+/* -------------------------------------------------------------------- */
+
+/* ---------------------------------- main2 ---------------------------------- */
+
+#main2 tr {
+    height: 40px;
+    text-align: center;
+}
+
+#main2 thead {
+    background-color: #eee;
+}
+#main2 th, #main2 td {
+    border: 1px solid #ccc;
+}
+/* -------------------------------------------------------------------- */
+
+/* ---------------------------------- 버튼 색 클래스 ---------------------------------- */
 .green {
-    background-color: #1CC88A;
+    background-color: var(--btn-color-green);
+    border-color: var(--btn-color-green);
+    color: #fff;
+}
+
+.gray {
+    background-color: var(--btn-color-gray);
+    border-color: var(--btn-color-gray);
+    color: #fff;
 }
 
 .blue {
-    background-color: #2185D0;
+    background-color: var(--btn-color-blue);
+    border-color: var(--btn-color-blue);
+    color: #fff;
 }
 
 .red {
-    background-color: #DB2828;
+    background-color: var(--btn-color-red);
+    border-color: var(--btn-color-red);
+    color: #fff;
 }
+/* -------------------------------------------------------------------- */
 
-.red_border{
-    border: 1px solid red;
-    outline: red;
+#main3 {
+    height: 600px;
 }
-
-/* .manager {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 60px;
-} */
-
-/*  new  */
-
-.address_in input{
-    align-items: center;
-}
-
-.address_btn {
-    display: flex;
-    gap: 5px;
-}
-
-.address_btn input {
-    width: 120px;
-}
-
-.f_table span {
-    color: rgb(220, 20, 20);
-
-}
-
-
-
-
-
-
-/* ---------------------------------- main1 ---------------------------------- */
