@@ -2,7 +2,7 @@
 
 write
 국내 입력창
-![image](https://github.com/jjh1037/project/assets/130326342/1b0f8f24-7ed9-4426-8f53-1a19d02d0529)
+![image](https://github.com/jjh1037/project/assets/130326342/159102c7-6fd6-4f31-9a89-a6e832a8683f)
 
 
 해외 입력창
