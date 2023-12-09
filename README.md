@@ -1,11 +1,9 @@
 # project
-left_container 에러 및 미완성
-- left_container과 메인section 개별 스크롤 미완
-- 메뉴 늘릴시 div높이 같이 안늘어남
 
 write
 국내 입력창
-![image](https://github.com/jjh1037/project/assets/130326342/81df255a-db93-4957-bea7-82d480c84752)
+![image](https://github.com/jjh1037/project/assets/130326342/b1f0e301-fd1e-4b6e-8680-ce1a7919dadf)
+
 
 해외 입력창
 ![image](https://github.com/jjh1037/project/assets/130326342/965311b3-366b-46b9-bd76-4ca5b4763c7e)
