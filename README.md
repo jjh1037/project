@@ -18,7 +18,7 @@ write
 - 해외주소 div 다듬기
 
 list
-![image](https://github.com/jjh1037/project/assets/130326342/f24be16e-c0f7-47a0-b942-315298f34f1f)
+![image](https://github.com/jjh1037/project/assets/130326342/fb5984ee-0921-449c-b2df-f65c556ac85f)
 
 - 삭제 기능 구현 - 완료
 - 수정 기능 구현 - 완료
@@ -29,10 +29,14 @@ list
 - 국내/해외 SELECT 추가
 
 view
+![image](https://github.com/jjh1037/project/assets/130326342/0b6377f2-5d0f-44c1-ba21-f252b3acb52d)
+
 - 사업장 주소 표시 다듬기
 - 수정, 삭제 버튼 생성 - 완료
 
 update
+![image](https://github.com/jjh1037/project/assets/130326342/2099d1c5-ac2a-4178-8a46-543474797e12)
+
 - 국내/해외에 따라 주소입력창 변경 -> 해외 start일시 오류
    select box에 선택 대신 해당 값 selected로 출력 가능하게 만들기
 - 
@@ -42,7 +46,11 @@ update
 
 ---- USER PAGE ----
 운송사 LIST 
-![image](https://github.com/jjh1037/project/assets/130326342/3b97ea28-365b-4272-a4a8-f278e05cc8dd)
+![image](https://github.com/jjh1037/project/assets/130326342/71b92e6d-4c1f-480b-a162-a6d564eca7e9)
+
+견적요청
+![image](https://github.com/jjh1037/project/assets/130326342/367643ec-aa6f-4153-b689-80f2f9d4a6d6)
+
 
 - db 연결 및 list 구현
 - 견적 요청 페이지 링크
