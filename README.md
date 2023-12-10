@@ -7,7 +7,7 @@ write
 
 
 해외 입력창
-![image](https://github.com/jjh1037/project/assets/130326342/bb40475e-0a09-4111-9980-4ff742b00429)
+![image](https://github.com/jjh1037/project/assets/130326342/9ac907be-2065-473c-8063-88bac37703c2)
 
 
 - 유효성 검사 - 완료
