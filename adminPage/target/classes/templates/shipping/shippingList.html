@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/_layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>운송사 관리 > 운송사 목록</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--    <link rel="stylesheet" type="text/css" th:href="@{/static/css/layoutStyle.css}" />-->
+    <style>
+        .main {
+            background-color: white;
+            box-shadow: 0 0 3px 1px #ccc;
+            margin-bottom: 30px;
+        }
+        .main h3 {
+        padding: 10px 0 10px 15px;
+        border-bottom: 1px solid #888;
+        color: rgb(50, 50, 50);
+        }
+
+
+        /* ---------------------------------- main1 ---------------------------------- */
+    #main1 th, #main1 td {
+        padding: 8px 14px;
+        height: 50px;
+        text-align: left;
+        /* vertical-align: middle; */
+    }
+
+    #main1 tr {
+        border-bottom: 1px solid #dcdcdc;
+    }
+
+    #main1 .w100 {
+        width: 150px;
+    }
+
+    /* col {
+        display: table-column;
+    } */
+
+    #main1 th {
+        background-color: #eee;
+        /* white-space: nowrap; */
+        /* text-overflow: ellipsis; */
+        line-height: 1.3rem;
+        /* font-weight: 400; */
+    }
+
+    #main1 select, input{
+        height: 30px;
+    }
+    .name_view_link:hover {
+        font-weight: bold;
+        text-decoration: underline;
+    }
+    /* ---------------------------------- main1 ---------------------------------- */
+    /* ---------------------------------- main2 ---------------------------------- */
+    .count {
+        text-align: right;
+    }
+
+    .count p {
+        margin: 5px 20px 0px 0;
+    }
+
+    #main2 tr {
+        height: 40px;
+        text-align: center;
+    }
+
+    #main2 thead {
+        background-color: #eee;
+    }
+    #main2 th, #main2 td {
+        border: 1px solid #ccc;
+    }
+
+    #main2 th:nth-child(1) {
+        width: 8%;
+    }
+
+    #main2 th:nth-child(2) {
+        width: 8%;
+    }
+
+    #main2 th:nth-child(3) {
+        width: 20%;
+    }
+
+    #main2 th:nth-child(4){
+        width: 25%;
+    }
+
+    #main2 th:nth-child(5){
+        width: 25%;
+    }
+
+
+
+    .btn_confirm {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 60px;
+    }
+
+    .btn_confirm input {
+        border: none;
+        margin: 0 4px;
+    }
+
+    .btn2 {
+        padding: 5px 12px;
+        color:#fff;
+        border-radius: 3px;
+        font-size: 14px;
+        cursor:pointer;
+    }
+
+    .bottom {
+        display: block;
+        display:flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+
+
+    </style>
+</head>
+
+<body>
+<h2 layout:fragment="page_name">운송사 목록</h2>
+
+<div class="main_container" layout:fragment="main_container">
+    <div class="main" id="main1">
+        <h3>운송사 검색</h3>
+
+        <form action="/shipping/shippingList" name="fsearch" id="fsearch" method="get">
+            <div class="f_table">
+                <table>
+                    <colgroup>
+                        <col class="w100">
+                        <col>
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <th>검색어</th>
+                        <td>
+<!--                                    <select name="searchType" class="searchType">-->
+<!--                                        <option value="">전체</option>-->
+<!--                                        <option value="1">국내</option>-->
+<!--                                        <option value="0">해외</option>-->
+<!--                                    </select>-->
+                            <select name="searchType" class="searchType">
+                                <option value="name">이름</option>
+                                <option value="id">운송사코드</option>
+                            </select>
+                            <input type="text" name="words" class="words" size="30">
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn_confirm">
+                <input type="submit" value="검색" class="btn blue">
+                <a th:href="@{/shipping/shippingList}" class="btn gray">초기화</a>
+                <!--                        <input type="button" value="초기화" class="btn red"> -->
+            </div>
+        </form>
+    </div>
+
+    <div class="main" id="main2">
+        <h3>운송사 검색결과</h3>
+        <div class="count">
+            <form action="/shipping/shippingList" method="get">
+                <p>전체결과 : <span><strong>[[${cnt}]]</strong></span>개</p>
+            </form>
+        </div>
+
+        <table>
+            <thead>
+            <tr>
+                <th>운송사코드</th>
+                <th>국내/해외</th>
+                <th>이름</th>
+                <th>전화번호</th>
+                <th>이메일</th>
+                <th>비고</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="shipList: ${list}">
+                <td>[[${shipList.id}]]</td>
+                <td>
+                    <th:block th:if="${#strings.equals(shipList.domestic, 'true')}">
+                        <p>국내</p>
+                    </th:block>
+                    <th:block th:unless="${#strings.equals(shipList.domestic, 'true')}">
+                        <p>해외</p>
+                    </th:block>
+                </td>
+                <td>
+                    <a th:href="@{/shipping/shippingView?(id=${shipList.id})}" class="name_view_link">
+                        [[${shipList.name}]]
+                    </a>
+                </td>
+                <td>[[${shipList.comNum}]]</td>
+                <td>[[${shipList.email}]]</td>
+                <td>
+                    <a th:href="@{/shipping/shippingView?(id=${shipList.id})}" class="btn blue">상세</a>
+                    <a th:href="@{/shipping/shippingUpdate?(id=${shipList.id})}" class="btn green">수정</a>
+                    <a href="#" class="btn red" th:onclick="remove([[${shipList.id}]])">삭제</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="bottom">
+            <div class="bottom-left">
+                <a th:href="@{/shipping/shippingWrite}" class="btn2 blue">신규등록</a>
+
+            </div>
+
+            <div class="bottom-center">
+                <!-- preview arrow -->
+                <a href="#" th:if="${page.page <= 1}">
+                </a>
+                <a th:href="@{/shipping/shippingList?(page=${page.page-1})}" th:unless="${page.page <= 1}" style="margin: 10px">
+                    <i class="fa-solid fa-angle-left"></i>
+                </a>
+
+                <!-- page number -->
+                <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/shipping/shippingList?(page=${i})}">
+                    <th:block th:if="${page.page eq i}">
+                        <span style="color:#f00; margin-right: 3px;">
+                            <strong>[[${i}]]</strong>
+                        </span>
+                    </th:block>
+                    <th:block th:unless="${page.page eq i}">
+                        <span style="margin-right: 3px;">
+                            [[${i}]]
+                        </span>
+                    </th:block>
+                </a>
+
+                <!-- next arrow -->
+                <a href="#" th:if="${page.page >= page.totalPage}">
+                </a>
+                <a th:href="@{/shipping/shippingList?(page=${page.page+1})}" th:unless="${page.page >= page.totalPage}" style="margin: 10px">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+    <a th:href="@{/user/u_shippingList}" class="btn red" style="float: right;">임시 유저페이지 운송사 전환</a>
+
+
+</div>
+
+<script layout:fragment="script">
+    function remove(id) {
+       if( confirm("운송사 코드" + id+ "를 삭제 하시겠습니까?") ) {
+            if(true) {
+            alert("운송사 코드" + id + " 삭제가 완료되었습니다.");
+                location.href = "/shipping/shippingDelete?id="+id;
+            }
+
+       }
+    }
+</script>
+
+</body>
+</html>

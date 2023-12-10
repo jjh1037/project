@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="fragment/_layout">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>운송사 관리 > 운송사 상세정보</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+        integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+<!--  <link rel="stylesheet" type="text/css" th:href="@{/static/css/layoutStyle.css}" />-->
+  <style>
+    .main {
+        background-color: white;
+        box-shadow: 0 0 3px 1px #ccc;
+        margin-bottom: 30px;
+    }
+    .main h3 {
+    padding: 10px 0 10px 15px;
+    border-bottom: 1px solid #888;
+    color: rgb(50, 50, 50);
+    }
+
+    /* ---------------------------------- main1 ---------------------------------- */
+    #main1 tr{
+        border-bottom: 1px solid #dcdcdc;
+    }
+
+    #main1 th, #main1 td{
+        padding: 8px 14px;
+        height: 50px;
+        text-align: left;
+    }
+
+    #main1 th {
+        background-color: #eee;
+        width: 10%;
+        line-height: 1.3rem;
+    }
+
+    #main1 td {
+        width: 40%;
+    }
+
+    #main1 .w100 {
+        width: 150px;
+    }
+
+    /* col {
+        display: table-column;
+    } */
+
+    #main1 select{
+        width: 193px;
+        height: 30px;
+    }
+
+    #main1 input {
+        height: 30px;
+        padding: 0 10px
+    }
+
+    #main1 p {
+      border: 1px solid #767676;
+      border-radius: 3px;
+      width: 193px;
+      height: 30px;
+      padding: 0 10px;
+      align-items: center;
+
+    }
+
+    #view_address p {
+      margin-bottom: 8px;
+    }
+
+    .btn_wrap {
+        display: flex;
+        align-items: center;
+        height: 40px;
+    }
+
+    .btn_wrap input {
+        border: none;
+        margin: 0 4px;
+    }
+    /* ------------------------------------------------------------------- */
+
+    /* ---------------------------------- main2 ---------------------------------- */
+
+    #main2 tr {
+        height: 40px;
+        text-align: center;
+    }
+
+    #main2 thead {
+        background-color: #eee;
+    }
+    #main2 th, #main2 td {
+        border: 1px solid #ccc;
+    }
+    /* -------------------------------------------------------------------- */
+
+
+  .red_border{ /* 값 미입력시 색 변경 이벤트 클래스*/
+    border: 1px solid red;
+    outline: red;
+  }
+
+  span {
+      color: rgb(220, 20, 20);
+  }
+
+  p {
+      margin: 0;
+  }
+
+  .btn_confirm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+  }
+
+  .btn_confirm input {
+      border: none;
+      margin: 0 4px;
+  }
+
+  </style>
+</head>
+
+<body>
+<h2 layout:fragment="page_name">운송사 상세정보</h2>
+
+<div class="main_container" layout:fragment="main_container">
+  <div class="main" id="main1">
+    <h3>운송사 정보</h3>
+
+    <form>
+      <div class="f_table">
+        <table>
+          <colgroup>
+            <col class="w100">
+            <col>
+          </colgroup>
+          <tbody>
+          <tr>
+            <th>국내/해외*</th>
+            <td>
+              <th:block th:if="${#strings.equals(view.domestic, 'true')}">
+                <p>국내</p>
+              </th:block>
+              <th:block th:unless="${#strings.equals(view.domestic, 'true')}">
+                <p>해외</p>
+              </th:block>
+            </td>
+          </tr>
+          <tr>
+            <th>운송사명*</th>
+            <td>
+              <p>[[${view.name}]]</p>
+            </td>
+            <th>이메일*</th>
+            <td>
+              <p>[[${view.email}]]</p>
+            </td>
+          </tr>
+          <tr>
+            <th>전화번호*</th>
+            <td>
+              <p>[[${view.comNum}]]</p>
+            </td>
+            <th>팩스번호</th>
+            <td>
+              <p>[[${view.faxNum}]]</p>
+            </td>
+          </tr>
+          <tr>
+            <th >사업장 주소</th>
+            <td id="view_address">
+              <ul>
+                <li>
+                  <label>주소</label>
+                  <p style="width: 390px;">[[${view.address1}]]</p>
+                  <label>상세주소</label>
+                  <p style="width: 390px;">[[${view.address2}]]</p>
+                </li>
+                <li>
+                  <label>우편번호</label>
+                  <p>[[${view.postcode}]]</p>
+                </li>
+                <li>
+                  <label>나라</label>
+                  <p>[[${view.country}]]</p>
+                </li>
+                <li>
+                  <label>도시</label>
+                  <p>[[${view.city}]]</p>
+                </li>
+              </ul>
+            </td>
+          </tr>
+          <tr class="img_file">
+            <th>운송사 이미지</th>
+            <td>
+              <img th:src="@{|/${view.folderName}/${view.savedFileName}|}" width="250" alt="">
+              <p style="border:none;">[[${view.orgName}]]</p>
+
+              <!--                                    <input type="file" name="file" class="file_insert" />-->
+            </td>
+
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="btn_confirm">
+        <!--                        <input type="submit" value="확인" class="btn green">-->
+        <a th:href="@{/shipping/shippingUpdate?(id=${view.id})}" class="btn blue">수정</a>
+        <a href="javascript:window.history.back();" class="btn gray" style="margin-left: 10px">확인</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+/* ---------------------------------- reset css ---------------------------------- */
+:root {
+    --btn-color-green: #1CC88A;
+    --btn-color-red: #fc5f64;
+    --btn-color-blue: #1A6DFF;
+    /*--btn-color-gray: #ACB8C9;  A2AEBF*/
+    --btn-color-gray: #A2AEBF;
+
+    --left_container-bg-color: #363b3e;
+
+    /* 로고 컬러 */
+    --main-color: rgb(245, 188, 0);;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul li {
+    list-style: none;
+    color: black;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    min-height: 100%;
+    background-color: rgb(236, 240, 244);
+}
+
+table {
+    border-collapse: collapse;
+    border-style: none;
+    width: 100%;
+}
+
+td {
+    border-spacing: 0px;
+    border-style: none;
+}
+
+hr {
+    border:0;
+    border-top:1px solid #ccc;
+    margin:0;
+    height:1px;
+}
+
+.container {
+    width: 100%;
+}
+/* -------------------------------------------------------------------- */
+
+/* ---------------------------------- left_container ---------------------------------- */
+
+.left_container {
+    display: inline-block;
+    position: fixed;
+    width: 11%;
+    height: 100vh;
+    padding: 10px 10px 0 10px;
+    background-color: var(--left_container-bg-color);
+    box-shadow: 0 0 3px 1px #ccc;
+}
+
+.left_container p {
+    margin: 20px 0 0 10px;
+    color: #aaa;
+}
+.left_container ul {
+    margin-top: 10px;
+}
+
+.left_container ul li a{
+    display: block;
+    color: white;
+    margin-bottom: 5px;
+    padding: 6px 12px;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.left_container ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: 0.2s;
+}
+
+.left_container i {
+    color: #aaa;
+    margin-right: 14px;
+}
+
+.menu .hide{
+    display: none;
+}
+
+.logo_wrap{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.logo_wrap h2 a{
+    font-size: 36px;
+    letter-spacing: 0.08em;
+    color: var(--main-color);
+    font-family: 'Bebas Neue', sans-serif;
+
+}
+.logo_wrap img {
+    width: 21px;
+    margin-top: -5px;
+}
+
+.selected { /* 페이지 클릭 이벤트 - 해당 페이지의 li 배경색 바뀜  */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.click { /* 버튼 클릭 이벤트 - 배경색 바뀜 */
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    transition: 0.2s;
+}
+/* -------------------------------------------------------------------- */
+
+/* ---------------------------------- section ---------------------------------- */
+
+section {
+    display: inline-block;
+    width: 89%;
+    margin-left: 11%;
+}
+/* -------------------------------------------------------------------- */
+
+/* ---------------------------------- nav ---------------------------------- */
+.nav_container {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 30px;
+}
+
+.nav_container h2 {
+    color: rgb(80, 80, 80);
+}
+/* -------------------------------------------------------------------- */
+
+/* ---------------------------------- main_container ---------------------------------- */
+.main_container {
+    width: 100%;
+    padding: 30px;
+}
+
+9/* ??? */
+.main {
+    background-color: white;
+    box-shadow: 0 0 3px 1px #ccc;
+    margin-bottom: 30px;
+}
+
+.main h3 {
+    padding: 10px 0 10px 15px;
+    border-bottom: 1px solid #888;
+    color: rgb(50, 50, 50);
+}
+/* -------------------------------------------------------------------- */
+
+
+
+/* ---------------------------------- 버튼/색 클래스 ---------------------------------- */
+.green {
+    background-color: var(--btn-color-green);
+    border-color: var(--btn-color-green);
+    color: #fff;
+}
+
+.gray {
+    background-color: var(--btn-color-gray);
+    border-color: var(--btn-color-gray);
+    color: #fff;
+}
+
+.blue {
+    background-color: var(--btn-color-blue);
+    border-color: var(--btn-color-blue);
+    color: #fff;
+}
+
+.red {
+    background-color: var(--btn-color-red);
+    border-color: var(--btn-color-red);
+    color: #fff;
+}
+
+.btn {
+    padding: 5px 12px;
+    color: #fff;
+    border-radius: 3px;
+    font-size: 14px;
+    cursor: pointer;
+}
+/* -------------------------------------------------------------------- */
+
