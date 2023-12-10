@@ -2,11 +2,12 @@
 
 write
 국내 입력창
-![image](https://github.com/jjh1037/project/assets/130326342/159102c7-6fd6-4f31-9a89-a6e832a8683f)
+![image](https://github.com/jjh1037/project/assets/130326342/5fd04dbd-9d8f-42b2-8777-8be827823af1)
+
 
 
 해외 입력창
-![image](https://github.com/jjh1037/project/assets/130326342/aca4efc0-7a80-402a-9ba1-a26e14db5d8e)
+![image](https://github.com/jjh1037/project/assets/130326342/bb40475e-0a09-4111-9980-4ff742b00429)
 
 
 - 유효성 검사 - 완료
