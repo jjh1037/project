@@ -18,6 +18,8 @@ write
 - 해외주소 div 다듬기
 
 list
+![image](https://github.com/jjh1037/project/assets/130326342/f24be16e-c0f7-47a0-b942-315298f34f1f)
+
 - 삭제 기능 구현 - 완료
 - 수정 기능 구현 - 완료
 - cnt 기능 구현 - 완료
