@@ -1,0 +1,356 @@
+
+<!doctype html>
+<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>커뮤니티 게시판</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <style>
+        .content {
+                width: 100%;
+                max-width: var(--main-width);
+                margin: 0px auto;
+                margin-top: 30px;
+                padding: 10px;
+            }
+
+            .content h2 {
+                color: var(--sub-color);
+                margin-bottom: 96px;
+            }
+
+            .content-wrapper {
+                width: 100%;
+                padding: 10px 0;
+                margin: 30px 0;
+                margin-top: -9px;
+                padding-top: 0;
+                text-align: center;
+            }
+
+            .content-wrapper table {
+                width: 100%;
+                border-collapse: collapse;
+                text-align: center;
+                /* margin: 3px 0 10px; */
+            }
+            .content-wrapper table a{
+                text-decoration: none;
+                color: black;
+            }
+            .content-wrapper table thead tr{
+                border-top: 2px solid rgb(187, 186, 186);
+                border-bottom: 2px solid rgb(187, 186, 186);
+                height: 35px;
+            }
+
+            .content-wrapper table tr {
+                height: 40px;
+            }
+            .content-wrapper table tbody tr {
+                border-bottom: 1px solid rgb(230, 230, 230);
+                font-size: 15px;
+            }
+
+            .content-wrapper table th,
+            td {
+                background-color: white;
+            }
+
+        /*-----------------------------------------------------------*/
+
+        /*-----------------------------------------------------------*/
+
+
+        .main {
+                background-color: white;
+                border-top: 1px solid black;
+                margin-bottom: 30px;
+            }
+        .main h3 {
+        padding: 10px 0 10px 15px;
+        border-bottom: 1px solid #888;
+        color: rgb(50, 50, 50);
+        }
+
+        /* ---------------------------------- main1 ---------------------------------- */
+        #main1 tr{
+            border-bottom: 1px solid #dcdcdc;
+        }
+
+        #main1 th, #main1 td{
+            padding: 8px 14px;
+            height: 50px;
+            text-align: left;
+        }
+
+        #main1 th {
+            background-color: #eee;
+            line-height: 1.3rem;
+        }
+
+        #main1 .w100 {
+            width: 150px;
+        }
+
+        /* col {
+            display: table-column;
+        } */
+
+        #main1 select{
+            width: 193px;
+            height: 30px;
+        }
+
+        #main1 input {
+            width: 250px;
+            height: 30px;
+            padding: 0 10px;
+        }
+
+        .btn_wrap {
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }
+
+        .btn_wrap input {
+            border: none;
+            margin: 0 4px;
+        }
+            
+        span {
+            color: #ea1515;
+        }
+
+        .searchBtn {
+                width: 50px;
+                border: 1px solid rgb(165, 165, 165);
+                background-color: white;
+                font-family: 'Noto Sans KR', sans-serif;
+                color: var(--sub-color);
+            }
+
+        .check-group ul li {
+            display: inline-block;
+            vertical-align: top;
+            padding: 4px 0;
+            font-size: 15px;
+            align-items: center;
+        }
+
+        #main1 .check-group input {
+            width: 15px;
+            height: 13px;
+        }
+
+        #main1 .check-group label {
+            margin-right: 16px;
+        }
+
+
+    </style>
+</head>
+<body>
+<!------------------------- 네비메뉴시작 -------------------------->
+<header>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <p>ECORENT</p>
+            </a>
+            <img src="images/leaf.png" alt="">
+        </div>
+        <div class="menu">
+            <ul class="menu-ul">
+                <li class="menu-li">
+                    <a href="">카테고리</a>
+                    <div class="subMenu-wrap">
+                        <ul class="subMenu">
+                            <li><a href="">방송무대</a></li>
+                            <li><a href="/users/car">자동차</a></li>
+                            <li><a href="">상업용 가전</a></li>
+                            <li><a href="/users/office">IT 오피스</a></li>
+                            <li><a href="">악기</a></li>
+                            <li><a href="">현장장비</a></li>
+                            <li><a href="">기타장비</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="">운송회사</a></li>
+                <li><a href="/users/community/listPost">커뮤니티</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <p><i class="fa-solid fa-magnifying-glass"></i></p>
+            <input type="text">
+        </div>
+        <div class="sign">
+
+            <a href="/users/member/login">로그인</a>
+            <a href="/users/member/join">회원가입</a>
+
+
+
+        </div>
+    </nav>
+
+    <!------------------------- 네비메뉴 끝 -------------------------->
+
+
+
+</header>
+
+<div class="content">
+    <h2>견적요청</h2>
+    <div class="content-wrapper">
+
+        <div class="main" id="main1">
+        
+            <form onsubmit="return frmCheck()" action="/shipping/shippingWrite" method="post" enctype="multipart/form-data" autocomplete="off">
+              <div class="f_table">
+                <table>
+                  <colgroup>
+                    <col class="w100">
+                    <col>
+                  </colgroup>
+                  <tbody>
+                  <tr>
+                    <th>고객명<span>*</span></th> 
+                    <td>
+                        <input type="text" name="name" class="name" placeholder="고객명 입력">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>연락처<span>*</span></th>
+                    <td>
+                      <input type="text" name="name" class="name" placeholder="연락처 입력">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>이메일<span>*</span></th>
+                    <td>
+                      <input type="text" name="email" class="email" placeholder="이메일 입력">
+                    </td>
+                  </tr>
+                  <tr>
+                    <th scope="row" rowspan="2">물류정보 <span class="required">*</span></th>
+                    <td>
+                        <div class="right">
+                            <label for="address1">출발국가</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="text" name="etc_2" id="address1" class="input"  placeholder="">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="address1">출발도시</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="text" name="etc_2" id="address1" class="input" placeholder="">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="address1">출발일자</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="text" name="etc_2" id="address1" class="input" placeholder="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="right">
+                            <label for="date">도착국가</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="text" name="etc_3" id="date" class="input" placeholder="">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            <label for="address2">도착도시</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="text" name="etc_4" id="address2" class="input" placeholder="">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="address1">도착일자</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="text" name="etc_2" id="address1" class="input" placeholder="">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row" rowspan="2">화물정보</th>
+                    <td class="p0">
+                            <table style="border-collapse: separate;">
+                                <tr>
+                                    <td>
+                                    <div class="check-group">
+                                        <ul>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t1" class="radio" value="퀸침대">
+                                                <label for="t1">방송무대</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t2" class="radio" value="싱글침대">
+                                                <label for="t2">자동차</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t3" class="radio" value="협탁">
+                                                <label for="t3">상업용 가전</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t4" class="radio" value="서랍장">
+                                                <label for="t4">IT 오피스</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t5" class="radio" value="장농">
+                                                <label for="t5">악기</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t6" class="radio" value="옷장">
+                                                <label for="t6">현장장비</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t7" class="radio" value="화장대">
+                                                <label for="t7">기타장비</label>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                    </td>
+                                </tr>
+                            </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <textarea name="contents" id="memo" class="textarea" style="width:100%;height:160px;padding: 5px;" placeholder="기타 화물정보를 기입해 주세요."></textarea>
+                    </td>
+                </tr>
+
+
+                
+                  </tbody>
+                </table>
+              </div>
+
+              <br>
+
+              <div class="btn_confirm">
+                <a th:href="@{/user/u_shippingList}" class="searchBtn" style="margin:0px 3px; padding: 8px 15px; width: 60px; text-decoration: none; font-weight: normal; font-size: 16px;" >요청</a>
+                <a th:href="@{/user/u_shippingList}" class="searchBtn" style="margin:0px 3px; padding: 8px 15px; width: 60px; text-decoration: none; font-weight: normal; font-size: 16px;" >취소</a>
+
+              </div>
+            </form>
+          </div>
+
+
+
+    </div>
+</div>
+
+<script>
+
+
+</script>
+</body>
+</html>
