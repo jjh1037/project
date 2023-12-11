@@ -214,22 +214,23 @@
 
 
         <form method="get" action="/user/u_shippingList" class="searchFrm" style="margin-top: -1;">
-<!--            <select class="searchType" id="searchType">-->
-<!--                <option value="">국내</option>-->
-<!--                <option value="concern">해외</option>-->
-<!--            </select>-->
-<!--            <select name="" id="">-->
-<!--                <option value="">-&#45;&#45;지역별-&#45;&#45;</option>-->
-<!--                <option value="">서울</option>-->
-<!--                <option value="">경기</option>-->
-<!--                <option value="">인천</option>-->
-<!--                <option value="">강원</option>-->
-<!--                <option value="">대전/충청</option>-->
-<!--                <option value="">대구</option>-->
-<!--                <option value="">부산/울산</option>-->
-<!--                <option value="">경상</option>-->
-<!--                <option value="">광주/전라/제주</option>-->
-<!--            </select>-->
+            <select class="domestic" id="domestic">
+                <option value="1">국내</option>
+                <option value="0">해외</option>
+            </select>
+            <div class="selectbox_city">
+                <select name="korCity" id="korCity">
+                    <option value="">-----지역-----</option> <!-- 국내 -->
+                    <option value="">서울</option>
+                    <option value="">경기</option>
+                    <option value="">인천</option>
+                    <option value="">강원</option>
+                    <option value="">대전/충청</option>
+                    <option value="">경북/대구</option>
+                    <option value="">경남/부산/울산</option>
+                    <option value="">광주/전라/제주</option>
+                </select>
+            </div>
             <input type="text" name="words" placeholder="업체명 입력">
             <input type="submit" value="검색" class="searchBtn">
             <a th:href="@{/user/u_shippingList}" class="searchBtn" style="margin:0px 5px; padding: 8px; width: 60px; text-decoration: none; font-weight: normal; font-size: 12px;">초기화</a>
@@ -283,7 +284,61 @@
 <script>
     function move() {
            location.href = "/user/u_shippingRequest";
-       }
+   }
+
+    $(document).ready(function() {
+        $(".domestic").change(function () {
+            if($(".domestic").val() == 1) {
+                $(".selectbox_city").append(`
+                    <select name="korCity" id="korCity">
+                        <option value="">-----지역-----</option> <!-- 국내 -->
+                        <option value="">서울</option>
+                        <option value="">경기</option>
+                        <option value="">인천</option>
+                        <option value="">강원</option>
+                        <option value="">대전/충청</option>
+                        <option value="">경북/대구</option>
+                        <option value="">경남/부산/울산</option>
+                        <option value="">광주/전라/제주</option>
+                    </select>
+                `);
+                $("#country").remove();
+
+            }else if($(".domestic").val() == 0) {
+                $(".selectbox_city").append(`
+                    <select name="country" id="country"> <!-- 해외 -->
+                        <option value="">-----국가-----</option>
+                        <optgroup label="아시아">
+                            <option value="">일본</option>
+                            <option value="">중국</option>
+                            <option value="">베트남</option>
+                            <option value="">사우디아라비아</option>
+                        </optgroup>
+                        <optgroup label="유럽">
+                            <option value="">영국</option>
+                            <option value="">프랑스</option>
+                            <option value="">독일</option>
+                            <option value="">스페인</option>
+                        </optgroup>
+                        <optgroup label="남/북아메리카">
+                            <option value="">미국</option>
+                            <option value="">캐나다</option>
+                            <option value="">브라질</option>
+                            <option value="">멕시코</option>
+                        </optgroup>
+                        <optgroup label="오세아니아/아프리카">
+                            <option value="">호주</option>
+                            <option value="">뉴질랜드</option>
+                            <option value="">남아프리카공화국</option>
+                            <option value="">가나</option>
+                        </optgroup>
+                    </select>
+                `);
+
+                $("#korCity").remove();
+            }
+        });
+    });
 
 </script>
 </body>

@@ -1,7 +1,7 @@
 package com.example.adminPage.dto;
 
 public class PageDto {
-    private int pageCount = 10; // 한 페이지 게시물 개수
+    private int pageCount = 4; // 한 페이지 게시물 개수
     private int blockCount = 5;
 
     private int page; // 현재 페이지 번호
