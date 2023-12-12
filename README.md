@@ -41,15 +41,23 @@ update
    select box에 선택 대신 해당 값 selected로 출력 가능하게 만들기
 - 
 
-사용한 API
-- 카카오 주소검색
+
 
 ---- USER PAGE ----
 운송사 LIST 
 ![image](https://github.com/jjh1037/project/assets/130326342/71b92e6d-4c1f-480b-a162-a6d564eca7e9)
+- 검색
+- 검색결과 cnt
+- 페이지
+- 각 견적요청 운송사와 id 링크
 
 견적요청
 ![image](https://github.com/jjh1037/project/assets/130326342/4e128bc6-ccaf-4b3f-9cbb-5a48c5c3360a)
+- db생성
+- 아이디와 링크된 운송사 출력
+- 화물정보 벨류값
+- 유효성 검사
+
 
 
 - db 연결 및 list 구현
@@ -57,6 +65,10 @@ update
   
 견적 요청
  - 폼 작성
+
+사용한 API
+- 카카오 주소검색
+- 날짜 입력
    
 사이드 네비게이터 -- 미확정
 - 운송사 list, 견적요청(?)
