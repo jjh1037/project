@@ -12,6 +12,7 @@
           integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"><script src="https://code.jquery.com/jquery-1.12.4.js"></script><script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="./css/style.css">
     <style>
         .content {
@@ -40,7 +41,7 @@
                 width: 100%;
                 border-collapse: collapse;
                 text-align: center;
-                margin: 3px 0 10px;
+                /* margin: 3px 0 10px; */
             }
             .content-wrapper table a{
                 text-decoration: none;
@@ -111,7 +112,7 @@
         }
 
         #main1 input {
-            width: 300px;
+            width: 250px;
             height: 30px;
             padding: 0 10px;
         }
@@ -138,6 +139,23 @@
                 font-family: 'Noto Sans KR', sans-serif;
                 color: var(--sub-color);
             }
+
+        .check-group ul li {
+            display: inline-block;
+            vertical-align: top;
+            padding: 4px 0;
+            font-size: 15px;
+            align-items: center;
+        }
+
+        #main1 .check-group input {
+            width: 15px;
+            height: 13px;
+        }
+
+        #main1 .check-group label {
+            margin-right: 16px;
+        }
 
 
     </style>
@@ -225,35 +243,85 @@
                     </td>
                   </tr>
                   <tr>
-                    <th scope="row" rowspan="2">이사정보 <span class="required">*</span></th>
+                    <th scope="row" rowspan="2">물류정보 <span class="required">*</span></th>
                     <td>
                         <div class="right">
-                            <label for="address1">출발국가</label>
-                            &nbsp;&nbsp;&nbsp;
-                            <input type="text" name="etc_2" id="address1" class="input"  placeholder="">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <label for="address1">출발도시</label>
                             &nbsp;&nbsp;&nbsp;
                             <input type="text" name="etc_2" id="address1" class="input" placeholder="">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="address1">출발일자</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="text" id="datepicker1" placeholder="출발일자">
+                            <script>
+                                $(function () {
+                                    $("#datepicker1").datepicker();});
+                            </script>
                         </div>
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="right">
-                            <label for="date">도착국가</label>
-                            &nbsp;&nbsp;&nbsp;
-                            <input type="text" name="etc_3" id="date" class="input" placeholder="">
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
                             <label for="address2">도착도시</label>
                             &nbsp;&nbsp;&nbsp;
                             <input type="text" name="etc_4" id="address2" class="input" placeholder="">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <label for="address1">도착일자</label>
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="text" id="datepicker2" placeholder="도착일자">
+                            <script>
+                                $(function () {
+                                    $("#datepicker2").datepicker();});
+                            </script>
                         </div>
                     </td>
                 </tr>
                 <tr>
-                    <th>화물정보</th>
+                    <th scope="row" rowspan="2">화물정보</th>
+                    <td class="p0" >
+                            <table style="border-collapse: separate;">
+                                <tr>
+                                    <td style="margin-left: -5px;">
+                                    <div class="check-group">
+                                        <ul>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t1" class="radio" value="퀸침대">
+                                                <label for="t1">방송무대</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t2" class="radio" value="싱글침대">
+                                                <label for="t2">자동차</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t3" class="radio" value="협탁">
+                                                <label for="t3">상업용 가전</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t4" class="radio" value="서랍장">
+                                                <label for="t4">IT 오피스</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t5" class="radio" value="장농">
+                                                <label for="t5">악기</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t6" class="radio" value="옷장">
+                                                <label for="t6">현장장비</label>
+                                            </li>
+                                            <li>
+                                                <input type="checkbox" name="etc7[]" id="t7" class="radio" value="화장대">
+                                                <label for="t7">기타장비</label>
+                                            </li>
+                                            
+                                        </ul>
+                                    </div>
+                                    </td>
+                                </tr>
+                            </table>
+                    </td>
+                </tr>
+                <tr>
                     <td>
                         <textarea name="contents" id="memo" class="textarea" style="width:100%;height:160px;padding: 5px;" placeholder="기타 화물정보를 기입해 주세요."></textarea>
                     </td>
