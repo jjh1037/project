@@ -1,14 +1,20 @@
 package com.example.adminPage.dto;
 
 public class PageDto {
-    private int pageCount = 4; // 한 페이지 게시물 개수
+    private int startNum;
+    private int pageCount = 6; // 한 페이지 게시물 개수
     private int blockCount = 5;
-
     private int page; // 현재 페이지 번호
+    private int totalPage;
     private int startPage;
     private int endPage;
-    private int totalPage;
 
+    public int getStartNum() {
+        return startNum;
+    }
+    public void setStartNum(int startNum) {
+        this.startNum = startNum;
+    }
     public int getPageCount() {
         return pageCount;
     }
