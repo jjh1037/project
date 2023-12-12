@@ -1,5 +1,6 @@
 package com.example.adminPage.mappers;
 
+import com.example.adminPage.dto.RequestDto;
 import com.example.adminPage.dto.ShippingDto;
 import org.apache.ibatis.annotations.*;
 
@@ -19,4 +20,7 @@ public interface UserShippingMapper {
 
     @Select("SELECT COUNT(*) FROM shipping")
     int totalCount();
+
+    @Insert("INSERT INTO request VALUES(NULL, #{requestName}, #{requestNum}, #{requestEmail}, #{requestExportCountry}, #{requestExportCity}, #{requestExportDate}, #{requestImportCountry}, #{requestImportCity}, #{requestImportDate}, #{requestProduct}, #{requestContent}, #{id})")
+    void setRequest(RequestDto requestDto);
 }

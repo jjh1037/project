@@ -46,5 +46,26 @@ ON UPDATE CASCADE
 ON DELETE restrict
 );
 
+-- 견적 db
+CREATE TABLE request(
+request_id int not null auto_increment,
+request_name varchar(30),
+request_num varchar(50),
+request_email varchar(50),
+request_export_country varchar(50),
+request_export_city varchar(50),
+request_export_date varchar(50),
+request_import_country varchar(50),
+request_import_city varchar(50),
+request_import_date varchar(50),
+request_product int,
+request_content text,
+id int not null, -- 부모 외래키
+primary key(request_id),
+foreign key(id) references shipping(id)
+ON UPDATE CASCADE
+ON DELETE restrict
+);
+
 
 

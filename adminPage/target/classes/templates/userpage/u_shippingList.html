@@ -152,6 +152,11 @@
                 align-items: center;
             }
 
+            .bottom-center a {
+                color: black;
+                text-decoration: none;
+            }
+
 
     </style>
 </head>
@@ -213,25 +218,26 @@
         </div> -->
 
 
-        <form method="get" action="/user/u_shippingList" class="searchFrm" style="margin-top: -1;">
-            <select class="domestic" id="domestic">
+        <form action="/user/u_shippingList" method="get" class="searchFrm" style="margin-top: -1;">
+            <select name= "searchType" class="searchType" id="domestic">
+                <option value="2">전체</option>
                 <option value="1">국내</option>
                 <option value="0">해외</option>
             </select>
-            <div class="selectbox_city">
-                <select name="korCity" id="korCity">
-                    <option value="">-----지역-----</option> <!-- 국내 -->
-                    <option value="">서울</option>
-                    <option value="">경기</option>
-                    <option value="">인천</option>
-                    <option value="">강원</option>
-                    <option value="">대전/충청</option>
-                    <option value="">경북/대구</option>
-                    <option value="">경남/부산/울산</option>
-                    <option value="">광주/전라/제주</option>
-                </select>
-            </div>
-            <input type="text" name="words" placeholder="업체명 입력">
+<!--            <div class="selectbox_city">-->
+<!--                <select name="korCity" id="korCity">-->
+<!--                    <option value="">-&#45;&#45;&#45;&#45;지역-&#45;&#45;&#45;&#45;</option> &lt;!&ndash; 국내 &ndash;&gt;-->
+<!--                    <option value="">서울</option>-->
+<!--                    <option value="">경기</option>-->
+<!--                    <option value="">인천</option>-->
+<!--                    <option value="">강원</option>-->
+<!--                    <option value="">대전/충청</option>-->
+<!--                    <option value="">경북/대구</option>-->
+<!--                    <option value="">경남/부산/울산</option>-->
+<!--                    <option value="">광주/전라/제주</option>-->
+<!--                </select>-->
+<!--            </div>-->
+            <input type="text" name="words" class="words" placeholder="업체명 입력">
             <input type="submit" value="검색" class="searchBtn">
             <a th:href="@{/user/u_shippingList}" class="searchBtn" style="margin:0px 5px; padding: 8px; width: 60px; text-decoration: none; font-weight: normal; font-size: 12px;">초기화</a>
         </form>
@@ -267,9 +273,12 @@
                 <td>[[${shipList.city}]]</td>
                 <td>[[${shipList.comNum}]]</td>
                 <td>
-                    <button style="width: 80px; height: 30px; background-color: var(--sub-color);
-                        border: none; border: 1px solid #ccc; padding: 0 5px; color: #eee;
-                        border-radius: 3px;" onclick="move()" >견적요청</button>
+<!--                    <button style="width: 80px; height: 30px; background-color: var(&#45;&#45;sub-color);-->
+<!--                        border: none; border: 1px solid #ccc; padding: 0 5px; color: #eee;-->
+<!--                        border-radius: 3px;" onclick="move()" >견적요청</button>-->
+                    <a th:href="@{/user/u_shippingRequest?(id=${shipList.id})}" style="background-color: var(--sub-color);
+                        border: none; border: 1px solid #ccc; padding: 8px 14px; color: #eee;
+                        border-radius: 3px;">견적요청</a>
                 </td>
             </tr>
 
@@ -277,15 +286,45 @@
 
         </table>
 
+        <div class="bottom-center" style="float: right;">
+            <!-- preview arrow -->
+            <a href="#" th:if="${page.page <= 1}">
+            </a>
+            <a th:href="@{/user/u_shippingList?(page=${page.page-1})}" th:unless="${page.page <= 1}" style="margin: 10px">
+                <i class="fa-solid fa-angle-left"></i>
+            </a>
+
+            <!-- page number -->
+            <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/user/u_shippingList?(page=${i})}">
+                <th:block th:if="${page.page eq i}">
+                        <span style="color:#f00; margin-right: 3px;">
+                            <strong>[[${i}]]</strong>
+                        </span>
+                </th:block>
+                <th:block th:unless="${page.page eq i}">
+                        <span style="margin-right: 3px;">
+                            [[${i}]]
+                        </span>
+                </th:block>
+            </a>
+
+            <!-- next arrow -->
+            <a href="#" th:if="${page.page >= page.totalPage}">
+            </a>
+            <a th:href="@{/user/u_shippingList?(page=${page.page+1})}" th:unless="${page.page >= page.totalPage}" style="margin: 10px">
+                <i class="fa-solid fa-angle-right"></i>
+            </a>
+        </div>
         <a th:href="@{/shipping/shippingList}" class="btn red">임시 유저페이지 운송사 전환</a>
     </div>
 </div>
 
 <script>
-    function move() {
-           location.href = "/user/u_shippingRequest";
-   }
+    window.onload = function() { // $(function() {} )
+        document.querySelector("input[name=words]").focus();
+    }
 
+    // 유효성 검사
     $(document).ready(function() {
         $(".domestic").change(function () {
             if($(".domestic").val() == 1) {

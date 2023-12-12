@@ -35,7 +35,7 @@ public class ShippingService {
         int startNum = (page - 1) * pageDto.getPageCount();
 
         map.put("searchQuery", searchQuery);
-        System.out.println(searchQuery);
+//        System.out.println(searchQuery);
         map.put("startNum", startNum);
         map.put("offset", pageDto.getPageCount());
 

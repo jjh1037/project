@@ -20,11 +20,13 @@ public class UserShippingListService {
         Map<String, Object> map = new HashMap<>();
 
         String searchQuery= "";
-        if(searchType.equals("name")) {
-            searchQuery = "WHERE " + searchType + " LIKE '%"+words+"%'";
-        }else if(searchType.equals("id")) {
-            searchQuery = "WHERE " + searchType + " = '" + words + "'";
-        }else {
+        if(searchType.equals("2")) {
+            searchQuery = "WHERE name LIKE '%"+words+"%'";
+        } else if(searchType.equals("1")) {
+            searchQuery = "WHERE name LIKE '%"+words+"%'" + "AND domestic = 1";
+        } else if(searchType.equals("0")) {
+            searchQuery = "WHERE name LIKE '%"+words+"%'" + "AND domestic = 0";
+        } else {
             searchQuery = "";
         }
 

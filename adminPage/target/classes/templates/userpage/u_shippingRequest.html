@@ -245,21 +245,21 @@
                     <tbody>
                     <tr>
                         <td>
-                            <p>국내</p>
+                            <p>[[${view.domestic}]]</p>
                         </td>
                         <td style="align-items: center;">
-                            <img th:src="@{/static/upload/20231211/2ae0d53e-2a47-4731-8628-8c61b2cd4cbf.png}" style="max-width: 250px; max-height: 60px; margin: 3px 0; align-items: center; " alt="">
+                            <img th:src="@{|/${view.folderName}/${view.savedFileName}|}" style="max-width: 250px; max-height: 60px; margin: 3px 0; align-items: center; " alt="">
                         </td>
-                        <td>에코랜트4</td>
-                        <td>대구</td>
-                        <td>010-4561-7894</td>
+                        <td>[[${view.name}]]</td>
+                        <td>[[${view.city}]]</td>
+                        <td>[[${view.comNum}]]</td>
                     </tr>
                 </table>
             </div>
 
 
             <h3 style="margin-top: 60px;">견적시트</h3>
-            <form onsubmit="return frmCheck()" action="/shipping/shippingWrite" method="post" enctype="multipart/form-data" autocomplete="off">
+            <form onsubmit="return frmCheck()" action="/user/u_shippingRequest" method="post" enctype="multipart/form-data" autocomplete="off">
                 <div class="f_table">
                     <table>
                         <colgroup>
@@ -270,19 +270,19 @@
                         <tr style="border-top: 2px solid rgb(187, 186, 186);">
                             <th>고객명<span class="asterisk">*</span></th>
                             <td>
-                                <input type="text" name="userName" class="userName" placeholder="고객명 입력">
+                                <input type="text" name="requestName" class="requestName" placeholder="고객명 입력">
                             </td>
                         </tr>
                         <tr>
                             <th>연락처<span class="asterisk">*</span></th>
                             <td>
-                                <input type="text" name="userNum" class="userNum" placeholder="연락처 입력">
+                                <input type="text" name="requestNum" class="requestNum" placeholder="연락처 입력">
                             </td>
                         </tr>
                         <tr>
                             <th>이메일<span class="asterisk">*</span></th>
                             <td>
-                                <input type="text" name="userEmail" class="userEmail" placeholder="이메일 입력">
+                                <input type="text" name="requestEmail" class="requestEmail" placeholder="이메일 입력">
                             </td>
                         </tr>
                         <tr>
@@ -290,15 +290,15 @@
                             <td>
                                 <label>출발국가</label>
                                 &nbsp;&nbsp;&nbsp;
-                                <input type="text" name="userExportCountry" class="userExportCountry"  placeholder="">
+                                <input type="text" name="requestExportCountry" class="requestExportCountry"  placeholder="">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <label>출발도시</label>
                                 &nbsp;&nbsp;&nbsp;
-                                <input type="text" name="userExportCity" class="userExportCity" placeholder="">
+                                <input type="text" name="requestExportCity" class="requestExportCity" placeholder="">
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <label>출발일자</label>
                                 &nbsp;&nbsp;&nbsp;
-                                <input type="text" name="userExportDate" class="userExportDate" id="datepicker1" placeholder="출발일자">
+                                <input type="text" name="requestExportDate" class="requestExportDate" id="datepicker1" placeholder="출발일자">
                                 <script>
                                     $(function () {
                                         $("#datepicker1").datepicker();
@@ -311,16 +311,16 @@
                                 <div class="right">
                                     <label>도착국가</label>
                                     &nbsp;&nbsp;&nbsp;
-                                    <input type="text" name="userImportCountry" class="userImportCountry" placeholder="">
+                                    <input type="text" name="requestImportCountry" class="requestImportCountry" placeholder="">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                                     <label>도착도시</label>
                                     &nbsp;&nbsp;&nbsp;
-                                    <input type="text" name="userImportCity" class="userImportCity" placeholder="">
+                                    <input type="text" name="requestImportCity" class="requestImportCity" placeholder="">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <label>도착일자</label>
                                     &nbsp;&nbsp;&nbsp;
-                                    <input type="text" name="userImportDate" class="userImportDate" id="datepicker2" placeholder="도착일자">
+                                    <input type="text" name="requestImportDate" class="requestImportDate" id="datepicker2" placeholder="도착일자">
                                     <script>
                                         $(function () {
                                             $("#datepicker2").datepicker();});
@@ -337,31 +337,31 @@
                                             <div class="check-group">
                                                 <ul>
                                                     <li style="margin-left: -14px;">
-                                                        <input type="checkbox" name="t1" id="t1" class="radio" value="퀸침대">
+                                                        <input type="checkbox" name="requestProduct" id="t1" class="radio" value="1">
                                                         <label for="t1">방송무대</label>
                                                     </li>
                                                     <li>
-                                                        <input type="checkbox" name="t2" id="t2" class="radio" value="싱글침대">
+                                                        <input type="checkbox" name="requestProduct" id="t2" class="radio" value="2">
                                                         <label for="t2">자동차</label>
                                                     </li>
                                                     <li>
-                                                        <input type="checkbox" name="t3" id="t3" class="radio" value="협탁">
+                                                        <input type="checkbox" name="requestProduct" id="t3" class="radio" value="3">
                                                         <label for="t3">상업용 가전</label>
                                                     </li>
                                                     <li>
-                                                        <input type="checkbox" name="t4" id="t4" class="radio" value="서랍장">
+                                                        <input type="checkbox" name="requestProduct" id="t4" class="radio" value="4">
                                                         <label for="t4">IT 오피스</label>
                                                     </li>
                                                     <li>
-                                                        <input type="checkbox" name="t5" id="t5" class="radio" value="장농">
+                                                        <input type="checkbox" name="requestProduct" id="t5" class="radio" value="5">
                                                         <label for="t5">악기</label>
                                                     </li>
                                                     <li>
-                                                        <input type="checkbox" name="" id="t6" class="radio" value="옷장">
+                                                        <input type="checkbox" name="requestProduct" id="t6" class="radio" value="6">
                                                         <label for="t6">현장장비</label>
                                                     </li>
                                                     <li>
-                                                        <input type="checkbox" name="etc7[]" id="t7" class="radio" value="화장대">
+                                                        <input type="checkbox" name="requestProduct" id="t7" class="radio" value="7">
                                                         <label for="t7">기타장비</label>
                                                     </li>
 
@@ -374,7 +374,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <textarea name="contents" id="memo" class="textarea" style="width:100%;height:160px;padding: 5px;" placeholder="기타 화물정보를 기입해 주세요."></textarea>
+                                <textarea name="requestContent" id="memo" class="requestContent" style="width:100%;height:160px;padding: 5px;" placeholder="기타 화물정보를 기입해 주세요."></textarea>
                             </td>
                         </tr>
 
@@ -385,7 +385,7 @@
                 </div>
 
                 <br>
-
+                <input type="hidden" name="id" class="id" th:value="${view.id}">
                 <div class="btn_confirm">
                     <input type="submit" class="searchBtn" style="margin:0px 3px; padding: 8px 15px; width: 60px; height: 42px; cursor: pointer; text-decoration: none; font-weight: normal; font-size: 16px;" >
 <!--                    <a th:href="@{/user/u_shippingList}" class="searchBtn" style="margin:0px 3px; padding: 8px 15px; width: 60px; text-decoration: none; font-weight: normal; font-size: 16px;" >요청</a>-->
