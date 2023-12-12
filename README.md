@@ -49,7 +49,7 @@ update
 ![image](https://github.com/jjh1037/project/assets/130326342/71b92e6d-4c1f-480b-a162-a6d564eca7e9)
 
 견적요청
-![image](https://github.com/jjh1037/project/assets/130326342/1a5a1182-9652-48e7-ab0a-e1b2bcf28e59)
+![image](https://github.com/jjh1037/project/assets/130326342/4e128bc6-ccaf-4b3f-9cbb-5a48c5c3360a)
 
 
 - db 연결 및 list 구현
