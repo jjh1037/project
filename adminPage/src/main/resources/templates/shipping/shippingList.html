@@ -262,6 +262,11 @@
 </div>
 
 <script layout:fragment="script">
+    window.onload=function(){
+        $(".ship_menu").show();
+        $(".ship_menu_1").css({"background-color":"rgba(255, 255, 255, 0.1)", "border-radius":"4px"});
+    }
+
     function remove(id) {
        if( confirm("운송사 코드" + id+ "를 삭제 하시겠습니까?") ) {
             if(true) {
@@ -271,6 +276,7 @@
 
        }
     }
+
 </script>
 
 </body>

@@ -146,6 +146,41 @@
                 color: var(--sub-color);
             }
 
+         /*-------------------------- 페이지 버튼---------------------------------*/
+        .bottom {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .bottom-left a.active {
+            background-color: #eee;
+            font-weight: bold;
+        }
+
+        .bottom-left a {
+            color: #333;
+            text-decoration: none;
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #fff;
+            border: 1px solid #e2e2e2;
+            box-shadow: 0 1px 1px 0 #eee;
+        }
+
+        .bottom-left a:first-child {
+            border-top-left-radius: 3px;
+            border-bottom-left-radius: 3px;
+        }
+
+        .bottom-left a:last-child {
+            border-top-right-radius: 3px;
+            border-bottom-right-radius: 3px;
+        }
+
+        .bottom-left a:not(first-child) {
+            margin-left: -6px;
+        }
         /*-----------------------------------------------------------*/
             table tbody tr td{
                 height: 65px;
@@ -156,7 +191,6 @@
                 color: black;
                 text-decoration: none;
             }
-
 
     </style>
 </head>
@@ -242,7 +276,7 @@
             <a th:href="@{/user/u_shippingList}" class="searchBtn" style="margin:0px 5px; padding: 8px; width: 60px; text-decoration: none; font-weight: normal; font-size: 12px;">초기화</a>
         </form>
         <div class="count" style="text-align: right;">
-            <p style="margin: 5px 20px 0px 0;">전체결과 : <strong>10</strong>개</p>
+            <p style="margin: 5px 20px 0px 0;">전체결과 : <strong>[[${cnt}]]</strong>개</p>
         </div>
 
         <table>
@@ -273,9 +307,6 @@
                 <td>[[${shipList.city}]]</td>
                 <td>[[${shipList.comNum}]]</td>
                 <td>
-<!--                    <button style="width: 80px; height: 30px; background-color: var(&#45;&#45;sub-color);-->
-<!--                        border: none; border: 1px solid #ccc; padding: 0 5px; color: #eee;-->
-<!--                        border-radius: 3px;" onclick="move()" >견적요청</button>-->
                     <a th:href="@{/user/u_shippingRequest?(id=${shipList.id})}" style="background-color: var(--sub-color);
                         border: none; border: 1px solid #ccc; padding: 8px 14px; color: #eee;
                         border-radius: 3px;">견적요청</a>
@@ -286,34 +317,68 @@
 
         </table>
 
-        <div class="bottom-center" style="float: right;">
-            <!-- preview arrow -->
-            <a href="#" th:if="${page.page <= 1}">
-            </a>
-            <a th:href="@{/user/u_shippingList?(page=${page.page-1})}" th:unless="${page.page <= 1}" style="margin: 10px">
-                <i class="fa-solid fa-angle-left"></i>
-            </a>
+<!--        <div class="bottom-center" style="float: right;">-->
+<!--            &lt;!&ndash; preview arrow &ndash;&gt;-->
+<!--            <a href="#" th:if="${page.page <= 1}">-->
+<!--            </a>-->
+<!--            <a th:href="@{/user/u_shippingList?(page=${page.page-1})}" th:unless="${page.page <= 1}" style="margin: 10px">-->
+<!--                <i class="fa-solid fa-angle-left"></i>-->
+<!--            </a>-->
 
-            <!-- page number -->
-            <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/user/u_shippingList?(page=${i})}">
-                <th:block th:if="${page.page eq i}">
-                        <span style="color:#f00; margin-right: 3px;">
-                            <strong>[[${i}]]</strong>
-                        </span>
-                </th:block>
-                <th:block th:unless="${page.page eq i}">
-                        <span style="margin-right: 3px;">
+<!--            &lt;!&ndash; page number &ndash;&gt;-->
+<!--            <a th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" th:href="@{/user/u_shippingList?(page=${i})}">-->
+<!--                <th:block th:if="${page.page eq i}">-->
+<!--                        <span style="color:#f00; margin-right: 3px;">-->
+<!--                            <strong>[[${i}]]</strong>-->
+<!--                        </span>-->
+<!--                </th:block>-->
+<!--                <th:block th:unless="${page.page eq i}">-->
+<!--                        <span style="margin-right: 3px;">-->
+<!--                            [[${i}]]-->
+<!--                        </span>-->
+<!--                </th:block>-->
+<!--            </a>-->
+
+<!--            &lt;!&ndash; next arrow &ndash;&gt;-->
+<!--            <a href="#" th:if="${page.page >= page.totalPage}">-->
+<!--            </a>-->
+<!--            <a th:href="@{/user/u_shippingList?(page=${page.page+1})}" th:unless="${page.page >= page.totalPage}" style="margin: 10px">-->
+<!--                <i class="fa-solid fa-angle-right"></i>-->
+<!--            </a>-->
+<!--        </div>-->
+
+        <div class="bottom">
+            <div class="bottom-left">
+                <!-- prevent arrow -->
+                <a href="#" th:if="${page.page <= 1}">
+                    <i class="fa-solid fa-angle-left"></i>
+                </a>
+                <a th:href="@{/user/u_shippingList?(page=${page.page-1})}" th:unless="${page.page <= 1}">
+                    <i class="fa-solid fa-angle-left"></i>
+                </a>
+
+
+                <th:block th:each="i : ${#numbers.sequence(page.startPage, page.endPage, 1)}" > <!-- i는 별명 -->
+                    <th:block th:if="${page.page eq i }">
+                        <a class="active" th:href="@{/user/u_shippingList?(page=${i})}">
                             [[${i}]]
-                        </span>
+                        </a>
+                    </th:block>
+                    <th:block th:unless="${page.page eq i }">
+                        <a th:href="@{/user/u_shippingList?(page=${i})}">
+                            [[${i}]]
+                        </a>
+                    </th:block>
                 </th:block>
-            </a>
 
-            <!-- next arrow -->
-            <a href="#" th:if="${page.page >= page.totalPage}">
-            </a>
-            <a th:href="@{/user/u_shippingList?(page=${page.page+1})}" th:unless="${page.page >= page.totalPage}" style="margin: 10px">
-                <i class="fa-solid fa-angle-right"></i>
-            </a>
+                <!-- next arrow -->
+                <a href="#" th:if="${page.page >= page.totalPage}">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+                <a th:href="@{/user/u_shippingList?(page=${page.page+1})}" th:unless="${page.page >= page.totalPage}">
+                    <i class="fa-solid fa-angle-right"></i>
+                </a>
+            </div>
         </div>
         <a th:href="@{/shipping/shippingList}" class="btn red">임시 유저페이지 운송사 전환</a>
     </div>

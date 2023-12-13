@@ -1,0 +1,281 @@
+
+<!doctype html>
+<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>커뮤니티 게시판</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+          integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"><script src="https://code.jquery.com/jquery-1.12.4.js"></script><script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" th:href="@{/static/css/u_shippingList_style.css}">
+    <style>
+        .content {
+            width: 100%;
+            max-width: var(--main-width);
+            margin: 0px auto;
+            margin-top: 30px;
+            padding: 10px;
+        }
+
+        .content h2 {
+            color: var(--sub-color);
+            padding-top: 5px;
+            margin-bottom: 50px;
+        }
+
+        .content-wrapper {
+            width: 100%;
+            padding: 10px 0;
+            margin: 30px 0;
+            margin-top: -9px;
+            padding-top: 0;
+            text-align: center;
+        }
+
+        .content-wrapper table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+            /* margin: 3px 0 10px; */
+        }
+        .content-wrapper table a{
+            text-decoration: none;
+            color: black;
+        }
+        .content-wrapper table thead tr{
+            border-top: 2px solid rgb(187, 186, 186);
+            border-bottom: 2px solid rgb(187, 186, 186);
+            height: 35px;
+        }
+
+        .content-wrapper table tr {
+            height: 40px;
+        }
+        .content-wrapper table tbody tr {
+            border-bottom: 1px solid rgb(230, 230, 230);
+            font-size: 15px;
+        }
+
+        .content-wrapper table th,
+        td {
+            background-color: white;
+        }
+
+    /*-----------------------------------------------------------*/
+
+    /*-----------------------------------------------------------*/
+
+
+    .main {
+            background-color: white;
+            /* border-top: 1px solid black; */
+            margin-bottom: 30px;
+    }
+
+    .main h3 {
+    padding: 10px 0 10px 15px;
+    /* border-bottom: 1px solid #888; */
+    color: rgb(50, 50, 50);
+    }
+
+    /* ---------------------------------- main1 ---------------------------------- */
+    #main1 tr{
+        border-bottom: 1px solid #dcdcdc;
+    }
+
+    #main1 th, #main1 td{
+        padding: 8px 14px;
+        height: 50px;
+        text-align: left;
+    }
+
+    #main1 th {
+        background-color: #eee;
+        line-height: 1.3rem;
+    }
+
+    #main1 .w100 {
+        width: 150px;
+    }
+
+    /* col {
+        display: table-column;
+    } */
+
+    #main1 select{
+        width: 193px;
+        height: 30px;
+    }
+    .btn_wrap {
+        display: flex;
+        align-items: center;
+        height: 40px;
+    }
+
+    .btn_wrap input {
+        border: none;
+        margin: 0 4px;
+    }
+
+    .searchBtn {
+            width: 50px;
+            border: 1px solid rgb(165, 165, 165);
+            background-color: white;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--sub-color);
+        }
+
+    .check-group ul li {
+        display: inline-block;
+        vertical-align: top;
+        padding: 4px 0;
+        font-size: 15px;
+        align-items: center;
+    }
+
+    #main1 .check-group input {
+        width: 15px;
+        height: 13px;
+    }
+
+    #main1 .check-group label {
+        margin-right: 16px;
+    }
+
+    .asterisk{
+        color: #ea1515;
+    }
+
+   #main1 .ship td{
+        text-align: center;
+    }
+
+   .red_border{ /* 값 미입력시 색 변경 이벤트 클래스*/
+       border: 1px solid red;
+       outline: red;
+   }
+
+   .check-group ul li label{
+        cursor: pointer;
+   }
+
+   .content-wrapper table td:nth-child(1) {
+        width: 10%;
+    }
+   .content-wrapper table td:nth-child(3) {
+        width: 15%;
+    }
+    .content-wrapper table td:nth-child(4) {
+        width: 20%;
+    }
+    .content-wrapper table td:nth-child(5) {
+        width: 20%;
+    }
+
+
+
+
+    </style>
+</head>
+<body>
+<!------------------------- 네비메뉴시작 -------------------------->
+<header>
+    <nav>
+        <div class="logo">
+            <a href="/">
+                <p>ECORENT</p>
+            </a>
+            <img src="/static/images/leaf.png" alt="">
+        </div>
+        <div class="menu">
+            <ul class="menu-ul">
+                <li class="menu-li">
+                    <a href="">카테고리</a>
+                    <div class="subMenu-wrap">
+                        <ul class="subMenu">
+                            <li><a href="">방송무대</a></li>
+                            <li><a href="/users/car">자동차</a></li>
+                            <li><a href="">상업용 가전</a></li>
+                            <li><a href="/users/office">IT 오피스</a></li>
+                            <li><a href="">악기</a></li>
+                            <li><a href="">현장장비</a></li>
+                            <li><a href="">기타장비</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a href="">운송회사</a></li>
+                <li><a href="/users/community/listPost">커뮤니티</a></li>
+            </ul>
+        </div>
+        <div class="search">
+            <p><i class="fa-solid fa-magnifying-glass"></i></p>
+            <input type="text">
+        </div>
+        <div class="sign">
+
+            <a href="/users/member/login">로그인</a>
+            <a href="/users/member/join">회원가입</a>
+
+
+
+        </div>
+    </nav>
+
+    <!------------------------- 네비메뉴 끝 -------------------------->
+
+
+
+</header>
+
+<div class="content">
+    <h2>장바구니</h2>
+    <div class="content-wrapper">
+
+        <div class="main" id="main1">
+            <div class="ship">
+                <h3>장바구니 담긴 상품(cnt)</h3>
+                <table>
+                    <thead>
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td>상품정보</td>
+                        <td>렌탈가격</td>
+                        <td>?</td>
+                        <td>?</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <input type="checkbox">
+                        </td>
+                        <td style="display: inline-box;">
+                            <img src="/static/images/7811_42410_203.jpg" alt="" style="width: 200px; height: 120px">
+                            <p>아반떼 15년식</p>
+                        </td>
+                        <td>3</td>
+                        <td>4</td>
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
+
+<script>
+
+</script>
+</body>
+</html>

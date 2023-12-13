@@ -67,5 +67,7 @@ ON UPDATE CASCADE
 ON DELETE restrict
 );
 
+-- request 요청일자, not null, product 값 입력, 국내 해외 폼 변경
+
 
 

@@ -251,6 +251,12 @@
 </div>
 
 <script layout:fragment="script">
+  window.onload=function(){
+        document.querySelector("input[name=name]").focus();
+        $(".ship_menu").show();
+        $(".ship_menu_1").css({"background-color":"rgba(255, 255, 255, 0.1)", "border-radius":"4px"});
+    }
+
   // ---------- select box 변환시 주소 입력 변환 이벤트 스크립트 ----------
         $(document).ready(function () {
             $(".domestic").change(function () {
@@ -298,9 +304,7 @@
         });
 
     // ---------- 유효성 검사 ----------
-    window.onload = function() { // $(function() {} )
-        document.querySelector("input[name=name]").focus();
-    }
+
 
     function frmCheck() {
         if ($(".name").val() == "") { // 운송사명

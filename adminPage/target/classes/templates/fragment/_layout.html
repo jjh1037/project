@@ -18,33 +18,33 @@
     <!-- --------------------- left_container --------------------- -->
     <div class="left_container">
         <div class="logo_wrap">
-            <h2><a href="">ECORENT</a></h2>
+            <h2><a th:href="@{/}">ECORENT</a></h2>
             <img src="/static/images/leaf.png" alt="">
         </div>
         <hr style="background-color: red;"/>
         <p>사이트 관리</p>
         <ul>
-            <li class="menu menu_member">
+            <li class="menu">
                 <a><i class="fa-regular fa-user"></i>회원관리</a>
-                <ul class="hide mem1">
-                    <li><a href="">회원정보</a></li>
-                    <li><a href="">회원등록</a></li>
-                    <li><a href="">회원레벨/포인트</a></li>
+                <ul class="hide member_menu">
+                    <li><a href="" class="member_menu_1">회원정보</a></li>
+                    <li><a href="" class="member_menu_2">회원등록</a></li>
+                    <li><a href="" class="member_menu_3">회원레벨/포인트</a></li>
                 </ul>
             </li>
-            <li class="menu menu_board">
+            <li class="menu">
                 <a><i class="fa-regular fa-clipboard"></i>게시판관리</a>
-                <ul class="hide board1">
-                    <li><a href="">게시판목록</a></li>
-                    <li><a href="">게시판 수정/삭제</a></li>
-                    <li><a href="">게시판 카테고리</a></li>
+                <ul class="hide board_menu">
+                    <li><a href="" class="board_menu_1">게시판목록</a></li>
+                    <li><a href="" class="board_menu_2">게시판 수정/삭제</a></li>
+                    <li><a href="" class="board_menu_3">게시판 카테고리</a></li>
                 </ul>
             </li>
-            <li class="menu menu_shipping">
+            <li class="menu">
                 <a><i class="fa-solid fa-truck"></i>운송사관리</a>
-                <ul class="hide ship1">
-                    <li><a th:href="@{/shipping/shippingList}">운송사 목록</a></li>
-                    <li><a th:href="@{/shipping/shippingWrite}">운송사 신규등록</a></li>
+                <ul class="hide ship_menu">
+                    <li><a th:href="@{/shipping/shippingList}" class="ship_menu_1">운송사 목록</a></li>
+                    <li><a th:href="@{/shipping/shippingWrite}" class="ship_menu_2">운송사 신규등록</a></li>
                 </ul>
             </li>
         </ul>
@@ -116,7 +116,7 @@
     });
     // ------------------------------------------------------
 
-    // left_container a태그 click 이벤트
+    // left_container a태그 click시 색 변경 이벤트
     const nonClick = document.querySelectorAll(".menu a");
 
     function handleClick(event) {
@@ -124,6 +124,7 @@
             e.classList.remove("click");
         });
         event.target.classList.add("click");
+
     }
 
     nonClick.forEach((e) => {

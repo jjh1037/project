@@ -209,7 +209,7 @@
             <th>운송사 이미지</th>
             <td>
               <img th:src="@{|/${view.folderName}/${view.savedFileName}|}" width="250" alt="">
-              <p style="border:none;">[[${view.orgName}]]</p>
+              <p style="border:none; width: 100%;">[[${view.orgName}]]</p>
 
               <!--                                    <input type="file" name="file" class="file_insert" />-->
             </td>
@@ -226,6 +226,11 @@
     </form>
   </div>
 </div>
-
+<script layout:fragment="script">
+  window.onload=function(){
+      $(".ship_menu").show();
+      $(".ship_menu_1").css({"background-color":"rgba(255, 255, 255, 0.1)", "border-radius":"4px"});
+  }
+</script>
 </body>
 </html>

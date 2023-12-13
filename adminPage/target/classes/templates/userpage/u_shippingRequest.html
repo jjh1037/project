@@ -245,7 +245,12 @@
                     <tbody>
                     <tr>
                         <td>
-                            <p>[[${view.domestic}]]</p>
+                            <th:block th:if="${#strings.equals(view.domestic, 'true')}">
+                                <p>국내</p>
+                            </th:block>
+                            <th:block th:unless="${#strings.equals(view.domestic, 'true')}">
+                                <p>해외</p>
+                            </th:block>
                         </td>
                         <td style="align-items: center;">
                             <img th:src="@{|/${view.folderName}/${view.savedFileName}|}" style="max-width: 250px; max-height: 60px; margin: 3px 0; align-items: center; " alt="">
@@ -288,16 +293,17 @@
                         <tr>
                             <th scope="row" rowspan="2">물류정보 <span class="asterisk">*</span></th>
                             <td>
-                                <label>출발국가</label>
-                                &nbsp;&nbsp;&nbsp;
-                                <input type="text" name="requestExportCountry" class="requestExportCountry"  placeholder="">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <th:block th:if="${#strings.equals(view.domestic, 'true')}">
+                                    <input type="hidden" name="requestExportCountry" class="requestExportCountry" value="korea" placeholder="">
+                                </th:block>
+                                <th:block th:unless="${#strings.equals(view.domestic, 'true')}">
+                                    <label>출발국가</label>
+                                    <input type="text" name="requestExportCountry" class="requestExportCountry"  placeholder="">
+                                </th:block>
+
                                 <label>출발도시</label>
-                                &nbsp;&nbsp;&nbsp;
                                 <input type="text" name="requestExportCity" class="requestExportCity" placeholder="">
-                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <label>출발일자</label>
-                                &nbsp;&nbsp;&nbsp;
                                 <input type="text" name="requestExportDate" class="requestExportDate" id="datepicker1" placeholder="출발일자">
                                 <script>
                                     $(function () {
@@ -308,24 +314,22 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="right">
+                                <th:block th:if="${#strings.equals(view.domestic, 'true')}">
+                                    <input type="hidden" name="requestImportCountry" class="requestImportCountry" value="korea" placeholder="">
+                                </th:block>
+                                <th:block th:unless="${#strings.equals(view.domestic, 'true')}">
                                     <label>도착국가</label>
-                                    &nbsp;&nbsp;&nbsp;
                                     <input type="text" name="requestImportCountry" class="requestImportCountry" placeholder="">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                </th:block>
 
-                                    <label>도착도시</label>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <input type="text" name="requestImportCity" class="requestImportCity" placeholder="">
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label>도착일자</label>
-                                    &nbsp;&nbsp;&nbsp;
-                                    <input type="text" name="requestImportDate" class="requestImportDate" id="datepicker2" placeholder="도착일자">
-                                    <script>
-                                        $(function () {
-                                            $("#datepicker2").datepicker();});
-                                    </script>
-                                </div>
+                                <label>도착도시</label>
+                                <input type="text" name="requestImportCity" class="requestImportCity" placeholder="">
+                                <label>도착일자</label>
+                                <input type="text" name="requestImportDate" class="requestImportDate" id="datepicker2" placeholder="도착일자">
+                                <script>
+                                    $(function () {
+                                        $("#datepicker2").datepicker();});
+                                </script>
                             </td>
                         </tr>
                         <tr>
