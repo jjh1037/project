@@ -67,10 +67,11 @@ hr {
     display: inline-block;
     position: fixed;
     width: 11%;
-    height: 100vh;
+    height: 100vh !important;
+    overflow: auto;
     padding: 10px 10px 0 10px;
     background-color: var(--left_container-bg-color);
-    box-shadow: 0 0 3px 1px #ccc;
+    box-shadow: 0 0 5px 2px #ccc;
 }
 
 .left_container p {
@@ -109,7 +110,6 @@ hr {
     display: flex;
     align-items: center;
     justify-content: center;
-
 }
 
 .logo_wrap h2 a{

@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 public class BasketController {
-    @GetMapping("/userpage/u_basket")
+    @GetMapping("/user/u_basket")
     public String getUBasket() {
         return "userpage/u_basket";
     }

@@ -16,167 +16,172 @@
     <link rel="stylesheet" th:href="@{/static/css/u_shippingList_style.css}">
     <style>
         .content {
-            width: 100%;
-            max-width: var(--main-width);
-            margin: 0px auto;
-            margin-top: 30px;
-            padding: 10px;
+        width: 100%;
+        max-width: var(--main-width);
+        margin: 0px auto;
+        margin-top: 30px;
+        padding: 10px;
         }
 
         .content h2 {
-            color: var(--sub-color);
-            padding-top: 5px;
-            margin-bottom: 50px;
+        color: var(--sub-color);
+        padding-top: 5px;
+        margin-bottom: 50px;
         }
 
         .content-wrapper {
-            width: 100%;
-            padding: 10px 0;
-            margin: 30px 0;
-            margin-top: -9px;
-            padding-top: 0;
-            text-align: center;
+        width: 100%;
+        padding: 10px 0;
+        margin: 30px 0;
+        margin-top: -9px;
+        padding-top: 0;
+        text-align: center;
         }
 
         .content-wrapper table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: center;
-            /* margin: 3px 0 10px; */
+        width: 100%;
+        border-collapse: collapse;
+        text-align: center;
+        /* margin: 3px 0 10px; */
         }
         .content-wrapper table a{
-            text-decoration: none;
-            color: black;
+        text-decoration: none;
+        color: black;
         }
         .content-wrapper table thead tr{
-            border-top: 2px solid rgb(187, 186, 186);
-            border-bottom: 2px solid rgb(187, 186, 186);
-            height: 35px;
+        border-top: 2px solid rgb(187, 186, 186);
+        border-bottom: 2px solid rgb(187, 186, 186);
+        height: 35px;
         }
 
         .content-wrapper table tr {
-            height: 40px;
+        height: 40px;
         }
         .content-wrapper table tbody tr {
-            border-bottom: 1px solid rgb(230, 230, 230);
-            font-size: 15px;
+        border-bottom: 1px solid rgb(230, 230, 230);
+        font-size: 15px;
         }
 
         .content-wrapper table th,
         td {
-            background-color: white;
+        background-color: white;
         }
 
-    /*-----------------------------------------------------------*/
+        /*-----------------------------------------------------------*/
 
-    /*-----------------------------------------------------------*/
+        /*-----------------------------------------------------------*/
 
 
-    .main {
-            background-color: white;
-            /* border-top: 1px solid black; */
-            margin-bottom: 30px;
-    }
+        .main {
+        background-color: white;
+        /* border-top: 1px solid black; */
+        margin-bottom: 30px;
+        }
 
-    .main h3 {
-    padding: 10px 0 10px 15px;
-    /* border-bottom: 1px solid #888; */
-    color: rgb(50, 50, 50);
-    }
+        .main h3 {
+        padding: 10px 0 10px 15px;
+        /* border-bottom: 1px solid #888; */
+        color: rgb(50, 50, 50);
+        }
 
-    /* ---------------------------------- main1 ---------------------------------- */
-    #main1 tr{
+        /* ---------------------------------- main1 ---------------------------------- */
+        #main1 tr{
         border-bottom: 1px solid #dcdcdc;
-    }
+        }
 
-    #main1 th, #main1 td{
+        #main1 th, #main1 td{
         padding: 8px 14px;
         height: 50px;
         text-align: left;
-    }
+        }
 
-    #main1 th {
+        #main1 th {
         background-color: #eee;
         line-height: 1.3rem;
-    }
+        }
 
-    #main1 .w100 {
+        #main1 .w100 {
         width: 150px;
-    }
+        }
 
-    /* col {
+        /* col {
         display: table-column;
-    } */
+        } */
 
-    #main1 select{
+        #main1 select{
         width: 193px;
         height: 30px;
-    }
-    .btn_wrap {
+        }
+        .btn_wrap {
         display: flex;
         align-items: center;
         height: 40px;
-    }
-
-    .btn_wrap input {
-        border: none;
-        margin: 0 4px;
-    }
-
-    .searchBtn {
-            width: 50px;
-            border: 1px solid rgb(165, 165, 165);
-            background-color: white;
-            font-family: 'Noto Sans KR', sans-serif;
-            color: var(--sub-color);
         }
 
-    .check-group ul li {
+        .btn_wrap input {
+        border: none;
+        margin: 0 4px;
+        }
+
+        .searchBtn {
+        width: 50px;
+        border: 1px solid rgb(165, 165, 165);
+        background-color: white;
+        font-family: 'Noto Sans KR', sans-serif;
+        color: var(--sub-color);
+        }
+
+        .check-group ul li {
         display: inline-block;
         vertical-align: top;
         padding: 4px 0;
         font-size: 15px;
         align-items: center;
-    }
+        }
 
-    #main1 .check-group input {
+        #main1 .check-group input {
         width: 15px;
         height: 13px;
-    }
+        }
 
-    #main1 .check-group label {
+        #main1 .check-group label {
         margin-right: 16px;
-    }
+        }
 
-    .asterisk{
+        .asterisk{
         color: #ea1515;
-    }
+        }
 
-   #main1 .ship td{
+        #main1 .ship td{
         text-align: center;
-    }
+        }
 
-   .red_border{ /* 값 미입력시 색 변경 이벤트 클래스*/
-       border: 1px solid red;
-       outline: red;
-   }
+        .red_border{ /* 값 미입력시 색 변경 이벤트 클래스*/
+        border: 1px solid red;
+        outline: red;
+        }
 
-   .check-group ul li label{
+        .check-group ul li label{
         cursor: pointer;
-   }
+        }
 
-   .content-wrapper table td:nth-child(1) {
+        .content-wrapper table td:nth-child(1) {
         width: 10%;
-    }
-   .content-wrapper table td:nth-child(3) {
+        }
+        .content-wrapper table td:nth-child(3) {
         width: 15%;
-    }
-    .content-wrapper table td:nth-child(4) {
+        }
+        .content-wrapper table td:nth-child(4) {
         width: 20%;
-    }
-    .content-wrapper table td:nth-child(5) {
+        }
+        .content-wrapper table td:nth-child(5) {
         width: 20%;
-    }
+        }
+
+        #main1 table tr th {
+            text-align: center;
+        }
+
 
 
 
@@ -243,13 +248,13 @@
                 <table>
                     <thead>
                     <tr>
-                        <td>
+                        <th>
                             <input type="checkbox">
-                        </td>
-                        <td>상품정보</td>
-                        <td>렌탈가격</td>
-                        <td>?</td>
-                        <td>?</td>
+                        </th>
+                        <th colspan="2">상품정보</th>
+                        <th style="text-align: center;">렌탈가격</th>
+                        <th>렌탈일자</th>
+                        <th>삭제</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -257,12 +262,19 @@
                         <td>
                             <input type="checkbox">
                         </td>
-                        <td style="display: inline-box;">
-                            <img src="/static/images/7811_42410_203.jpg" alt="" style="width: 200px; height: 120px">
-                            <p>아반떼 15년식</p>
+                        <td style="width: 220px; height: 140x; text-align: center; item-align: center;">
+                            <img src="/static/images/7811_42410_203.jpg" alt="" style="width: 200px; height: 120px;">
                         </td>
-                        <td>3</td>
-                        <td>4</td>
+                        <td>
+                            <div style="text-align: start;">
+                                <p>[UserId]</p>
+                                <p><strong>아반떼 15년식</strong></p>
+                            </div>
+                        </td>
+                        <td>350,000원</td>
+                        <td>12/21/2023 ~ 02/08/2024</td>
+                        <td><i class="fa-regular fa-trash-can"></i></td>
+
 
                     </tr>
                 </table>
