@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        ul li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        .cart_container {
+            position:absolute;
+            display: none;
+            top: 10%; /* 위치 */
+            left: 59px;
+            width: 200px;
+            height: 50px;
+            border: 1px solid rgb(221, 221, 221);
+            border-radius: 8px;
+            box-shadow: 0px 0px 9px 1px rgb(231, 231, 231);
+            background-color: white;
+        }
+        .cart_container::-webkit-scrollbar{
+            width : 5px;
+            height : 10px;
+        }
+        .cart_container::-webkit-scrollbar-thumb{
+            border-radius : 2px;
+            background-color :rgb(194, 194, 194)
+        }
+        
+        .active {
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+        <a href="" class="dropbtn_click" style="font-size: 20px; cursor: pointer; background-color: tomato;">버버튼튼</a>
+        <div class="cart_container">
+            <ul>
+                <li>1qwe</li>
+                <li>2qwe</li>
+                <li>3qwe</li>
+                <li>4qwe</li>
+            </ul>
+        </div>
+    <script>
+        let dropbtn_click = document.querySelector(".dropbtn_click");
+        let cartWrap = document.querySelector(".cart_container")
+
+        dropbtn_click.addEventListener('click', (e) =>{
+            e.preventDefault();
+            cartWrap.classList.toggle('active');
+            e.stopPropagation();
+        });
+
+
+        
+    </script>
+</body>
+</html>

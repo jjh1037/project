@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+.dropdown-label{
+  font-size : 12px;
+  margin : 10px;
+  font-weight : bold;
+  color : rgb(50, 50, 50);
+}
+
+.active {
+    display: block;
+}
+
+
+.dropdown-content{
+  display : none;
+  font-weight: 400;
+  background-color: #fcfcfc;
+  min-width : 350px;
+  border-radius: 8px;
+  height : 160px;
+  overflow : scroll;
+  box-shadow: 0px 0px 10px 3px rgba(190, 190, 190, 0.6);
+}
+.dropdown-content::-webkit-scrollbar{
+  width : 5px;
+  height : 10px;
+}
+.dropdown-content::-webkit-scrollbar-thumb{
+  border-radius : 2px;
+  background-color :rgb(194, 194, 194)
+}
+
+.dropdown-content div{
+  display : block;
+  text-decoration : none;
+  color : rgb(37, 37, 37);
+  font-size: 12px;
+  margin-top: 10px;
+}
+.dropdown-content div:hover{
+  background-color: rgb(226, 226, 226);
+}
+
+.dropdown-content.show{
+  display : block;
+}
+
+.cart_wrap {
+    padding-left: 20px;
+}
+
+/*asdfadf*/
+a {
+    text-decoration: none;
+    color: black;
+}
+ul li {
+    list-style: none;
+}
+
+ul {
+    padding: 0;
+}
+
+
+    </style>
+</head>
+<body>
+    
+        <a href="#" class="dropbtn_click" onclick="dropdown()"><i class="fa-regular fa-bookmark dropbtn_click"></i></a>
+        <a href="#"><p class="lender" style="cursor: pointer;">렌렌렌더더더더</p></a>
+
+        
+        <div class="dropdown-content" style="width: 50px;">
+
+            <ul>
+
+
+                <li>
+                    <a href="">
+                    <div class="cart_wrap">
+                        <div class="cartImg">
+                            <img src="./prj_user/prj_user/images/leaf.png" alt="" style="max-width:128px; max-height: 72px; margin-right : 40px;">
+                        </div>
+                        <div class="cartText">
+                            <p><strong>[자동차]</strong></p>
+                            <p>아반떼 팝니다.</p>
+                        </div>
+                    </div>
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="">
+                    <div class="cart_wrap" style="display: flex; justify-content: start;">
+                        <div class="cartImg">
+                            <img src="./prj_user/prj_user/images/leaf.png" alt="" style="max-width:128px; max-height: 72px; margin-right : 40px;">
+                        </div>
+                        <div class="cartText">
+                            <p><strong>[자동차]</strong></p>
+                            <p>아반떼 팝니다.</p>
+                        </div>
+                    </div>
+                    </a>
+                </li>
+
+            </ul>
+
+
+        </div>
+    
+
+    <script>
+        window.onload=()=>{
+      document.querySelector('.dropbtn_click').onclick = ()=>{
+        dropdown();
+      }
+      document.getElementsByClassName('fastfood').onclick = ()=>{
+        showMenu(value);
+      };
+      dropdown = () => {
+        var v = document.querySelector('.dropdown-content');
+       
+        v.classList.toggle('show');
+       
+      }
+    }
+    window.onclick= (e)=>{
+      if(!e.target.matches('.dropbtn_click')){
+        var dropdowns = document.getElementsByClassName("dropdown-content");
+
+        var dropbtn_icon = document.querySelector('.dropbtn_icon');
+        var dropbtn_content = document.querySelector('.dropbtn_content');
+        var dropbtn_click = document.querySelector('.dropbtn_click');
+        
+
+        var i;
+        for (i = 0; i < dropdowns.length; i++) {
+          var openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
+        }
+      }
+    }
+
+    let lender = document.querySelector(".lender");
+    let dropdownContent = document.querySelector(".dropdown-content");
+
+    lender.addEventListener('click',(event)=>{
+        dropdownContent.classList.toggle('active');
+        event.stopPropagation(); // 이벤트 버블링 방지
+    });
+    </script>
+</body>
+</html>
