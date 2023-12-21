@@ -56,6 +56,10 @@ update
 - 화물정보 벨류값
 - 유효성 검사
 
+장바구니
+![image](https://github.com/jjh1037/project/assets/130326342/6dbb66f8-4b06-48b5-b8fa-1493f8290e3f)
+
+
 
 
 - db 연결 및 list 구현
