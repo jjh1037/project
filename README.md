@@ -13,6 +13,6 @@
 
 ## 프로젝트 구현 페이지
 ### - 회원가입 및 로그인
-![image](https://github.com/jjh1037/project/assets/130326342/867acd8f-176a-4955-a23b-ce95cfacf168)
-![image](https://github.com/jjh1037/project/assets/130326342/98a792dd-718f-42fc-800f-d78e5357de4a)
+![image](https://github.com/jjh1037/project/assets/130326342/867acd8f-176a-4955-a23b-ce95cfacf168){: width="100%" height="100%"}
+![image](https://github.com/jjh1037/project/assets/130326342/98a792dd-718f-42fc-800f-d78e5357de4a){: width="100%" height="100%"}
 
